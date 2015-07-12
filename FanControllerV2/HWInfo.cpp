@@ -26,6 +26,13 @@
 HWInfo::HWInfo()
 {
 	box.setWindowTitle("FanController");
+#ifdef _WIN32
+	readHWiNFOTemps = (_readHWiNFOTemps)GetProcAddress((HMODULE)LoadLibraryA("HWiNFO64.dll"), "readHWiNFOTemps");
+	if (readHWiNFOTemps == NULL)
+	{
+		QMessageBox::information(0, "FanControl", "HWiNFO Plugin not found!\nReading Sensorvalues from HWiNFO may not be possible!");
+	}
+#endif
 }
 
 
@@ -40,13 +47,6 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 #ifdef __linux__
 	return false;
 #endif
-
-
-	readHWiNFOTemps = (_readHWiNFOTemps)GetProcAddress((HMODULE)LoadLibraryA("HWiNFO64.dll"), "readHWiNFOTemps");
-	if (readHWiNFOTemps == NULL)
-	{
-		QMessageBox::information(0, "FanControl", "HWiNFO Plugin not found!\nReading Sensorvalues from HWiNFO may not be possible!");
-	}
 
 	lW_Status = lw_status;
 	Settings = &settings;

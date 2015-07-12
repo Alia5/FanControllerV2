@@ -675,7 +675,24 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 
 void FanControllerV2::about()
 {
-	QDesktopServices::openUrl(QString("%1readme.txt").arg(QCoreApplication::applicationDirPath()));
+
+	QMessageBox msgBox(this);
+	msgBox.setWindowTitle("Help / About");
+	msgBox.setTextFormat(Qt::RichText);   //this is what makes the links clickable
+	msgBox.setText("This FanController project  was created by my desire to to have a custom FanController-Hardware, which has 6 channels,<br />" 
+		"is usb - controlled, and gets its temperatues from the hardware - sensors instead of some crappy temperature fingers you attach to a heatsink<br />" 
+		"this is the controll application for my usb fan controller.<br />" 
+		"You can find the hardware-part <a href='https://github.com/Alia5/atmega328p_6_channel_usb_fancontroller'>here</a><br />" 
+		"<br / >" 
+		"if you got this application from the original author, you most likeley know everything about this there is to know<br />" 
+		"else, if you have any questions you can <a href='https://github.com/Alia5/'>contact me</a> for any help.<br />"
+		"This project is Licensed under GPLv3<br /><br />"
+		"Third Party Licences:<br />"
+		"Qt: LGPLv3<br />"
+		"HIDAPI: GPLv3<br />"
+		"QCustomPlot: GPLv3<br /><br />"
+		"You can find more information about the licenses in the application-directory in the corresponding files");
+	msgBox.exec();
 }
 
 FanControllerV2::~FanControllerV2()

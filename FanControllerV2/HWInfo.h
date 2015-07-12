@@ -16,7 +16,7 @@
 * License: GNU GPL v3 (see License.txt)
 
 * Qt Toolkit:
-* Copyright (C) 2014 Kurt Pattyn <pattyn.kurt@gmail.com>.
+* Copyright (C) The Qt Company
 * License: GNU LGPL v3 (see qt-license.txt)
 */
 
@@ -58,8 +58,8 @@ private:
 
 	//hwinfo64 sensor api shouldn't be made publicly.. so i only provided a proprietary dll...
 	//since this program is gpl licensed, i use the plugin as an optinal one and load it dynamically, so it could live without the application
-	typedef void(__stdcall* _readHWiNFOTemps)(char*, int);
-	_readHWiNFOTemps readHWiNFOTemps;
+	typedef void(__cdecl* _readHWiNFOTemps)(char* c_str, int len);
+	_readHWiNFOTemps readHWiNFOTemps = NULL;
 
 public:
 	HWInfo();

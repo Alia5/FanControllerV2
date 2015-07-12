@@ -16,7 +16,7 @@
 * License: GNU GPL v3 (see License.txt)
 
 * Qt Toolkit:
-* Copyright (C) 2014 Kurt Pattyn <pattyn.kurt@gmail.com>.
+* Copyright (C) The Qt Company
 * License: GNU LGPL v3 (see qt-license.txt)
 */
 

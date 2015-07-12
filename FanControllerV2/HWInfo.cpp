@@ -103,7 +103,6 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 			}
 
 			readSucces = true;
-			waiter = 10;
 		} else {
 			readSucces = false;
 		}
@@ -174,7 +173,6 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 		}
 
 		readSucces = true;
-		waiter = 10;
 	}
 	if (readSucces)
 		errorShown = false;
@@ -217,11 +215,6 @@ bool HWInfo::update()
 		} else {
 			if (!errorShown)
 			{
-				if (waiter < 10)
-				{
-					waiter++;
-				}
-				else {
 					if (!errorShown)
 					{
 						box.setText("Error while reading data from AIDA64!");
@@ -232,7 +225,6 @@ bool HWInfo::update()
 					tempValues = NULL;
 					sensorValues = 0;
 					lW_Status->clear();
-				}
 			}
 			readSucces = false;
 		}
@@ -243,11 +235,7 @@ bool HWInfo::update()
 
 		if (InfoString == "DEAD")					//memory is dead...
 		{
-			if (waiter < 10)
-			{
-				waiter++;
-			}
-			else {
+
 				if (!errorShown)
 				{
 					box.setText("Error while reading data from HWiNFO64!");
@@ -260,15 +248,9 @@ bool HWInfo::update()
 				sensorValues = 0;
 				lW_Status->clear();
 				return readSucces;
-			}
 		}
 		if (InfoString == "CLOSED")					
 		{
-			if (waiter < 10)
-			{
-				waiter++;
-			}
-			else {
 				if (!errorShown)
 				{
 					box.setText("HWiNFOs Sensor-panel is closed, or HWiNFO is!");
@@ -281,7 +263,6 @@ bool HWInfo::update()
 				sensorValues = 0;
 				lW_Status->clear();
 				return readSucces;
-			}
 		}
 
 		if (sensorValues != InfoString.count("<sep>"))		//if we have new hardware at runtime (eg, e-sata stuff, we need to reinit..) //also if we switch sensor source or something else goes wrong

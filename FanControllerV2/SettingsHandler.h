@@ -28,7 +28,7 @@
 
 #include "ui_fan.h"
 
-#define VersionNumber 200
+#define VersionNumber 201
 
 class SettingsHandler
 {
@@ -50,6 +50,7 @@ public:
 		int versionnumber;
 		bool autoRun;
 		bool startMini;
+		bool waitfor;
 		bool useAIDA;
 		int maxCPUTemp;
 		int indexOfCPUTemp;

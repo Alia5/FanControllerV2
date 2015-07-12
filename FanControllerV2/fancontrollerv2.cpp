@@ -88,6 +88,7 @@ void FanControllerV2::init()
 
 	ui.cb_autorun->setChecked(Settings.Data.autoRun);
 	ui.cb_startmini->setChecked(Settings.Data.startMini);
+	ui.cb_waitfor->setChecked(Settings.Data.waitfor);
 
 	if (Settings.Data.startMini && device.connected())
 		QTimer::singleShot(0, this, SLOT(hide()));
@@ -106,8 +107,22 @@ void FanControllerV2::init()
 
 	this->resize(Settings.Data.winSizeX, Settings.Data.winSizeY);
 
-	if (HWInfo.init(Settings, ui.lW_Status, AutoPages))
-		ui.rB_Automode->setChecked(true);
+	if (Settings.Data.waitfor)
+	{
+		for (int i = 0; i < 30; i++)
+		{
+			if (HWInfo.init(Settings, ui.lW_Status, AutoPages))
+			{
+				ui.rB_Automode->setChecked(true);
+				break;
+			}
+			QThread::sleep(1);
+		}
+	}
+	else {
+		if (HWInfo.init(Settings, ui.lW_Status, AutoPages))
+			ui.rB_Automode->setChecked(true);
+	}
 
 	timer.setInterval(1000);
 	timer.start();
@@ -441,6 +456,7 @@ void FanControllerV2::updatesettings()
 
 	Settings.Data.autoRun = ui.cb_autorun->isChecked();
 	Settings.Data.startMini = ui.cb_startmini->isChecked();
+	Settings.Data.waitfor = ui.cb_waitfor->isChecked();
 
 	if (Settings.Data.useAIDA != ui.rB_Aida->isChecked())
 	{
@@ -658,7 +674,7 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 
 void FanControllerV2::about()
 {
-	QDesktopServices::openUrl(QUrl("file:readme.txt"));
+	QDesktopServices::openUrl(QString("%1readme.txt").arg(QCoreApplication::applicationDirPath()));
 }
 
 FanControllerV2::~FanControllerV2()

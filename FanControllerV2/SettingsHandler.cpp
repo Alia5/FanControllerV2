@@ -93,7 +93,7 @@ void SettingsHandler::WriteSettings()
 
 	file.setFileName(settingspath + "/general.dat");
 	file.open(QIODevice::ReadWrite);
-	filestream << VersionNumber << Data.autoRun << Data.startMini << Data.useAIDA << Data.maxCPUTemp << Data.indexOfCPUTemp << Data.useSliders << Data.useDials << Data.winSizeX << Data.winSizeY;		//autorun, startmini, useAIDA, maxCPUTemp, index, winsize
+	filestream << VersionNumber << Data.autoRun << Data.startMini << Data.useAIDA << Data.waitfor << Data.maxCPUTemp << Data.indexOfCPUTemp << Data.useSliders << Data.useDials << Data.winSizeX << Data.winSizeY;		//autorun, startmini, useAIDA, maxCPUTemp, index, winsize
 	file.close();
 
 	file.setFileName(settingspath + "/automode.dat");
@@ -145,7 +145,7 @@ void SettingsHandler::CreateSettings()
 
 	file.setFileName(settingspath + "/general.dat");
 	file.open(QIODevice::ReadWrite);
-	filestream << VersionNumber << (bool)true << (bool)false << (bool)true << 72 << 0 << bool(true) << bool(false) << 680 << 400;		//versionnumber, autorun, startmini, useAIDA, maxCPUTemp, index, winsize
+	filestream << VersionNumber << (bool)true << (bool)false << (bool)true << (bool)false << 72 << 0 << bool(true) << bool(false) << 680 << 400;		//versionnumber, autorun, startmini, useAIDA, maxCPUTemp, index, winsize
 	file.close();
 
 }

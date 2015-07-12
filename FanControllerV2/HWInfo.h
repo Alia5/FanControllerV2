@@ -54,7 +54,6 @@ private:
 
 	char temp[4096];
 
-	int waiter = 0;
 
 	//hwinfo64 sensor api shouldn't be made publicly.. so i only provided a proprietary dll...
 	//since this program is gpl licensed, i use the plugin as an optinal one and load it dynamically, so it could live without the application

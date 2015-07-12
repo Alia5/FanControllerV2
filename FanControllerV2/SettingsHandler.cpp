@@ -58,6 +58,8 @@ void SettingsHandler::ReadSettings()
 		>> Data.useSliders >> Data.useDials >> Data.winSizeX >> Data.winSizeY >> Data.waitfor;		//autorun, startmini, useAIDA, maxCPUTemp
 	file.close();	
 
+	Data.versionnumber = VersionNumber;
+
 	file.setFileName(settingspath + "/fansettings.dat");
 	if (!file.exists())
 		CreateSettings();

@@ -130,7 +130,7 @@ void FanControllerV2::init()
 
 	initGraphs();
 
-	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
+	reply = manager.get(QNetworkRequest(QString("https://github.com/Alia5/FanControllerV2/blob/master/Win32/Release/version?raw=true")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 
@@ -359,12 +359,12 @@ void FanControllerV2::update()
 				if (AutoPages.apAutoPage[i].ComboBox->currentIndex() != -1)
 				{
 					int k;
-					for (k = 0; k < ui.lW_Status->count(); k++)
+					for (k = 0; k < ui.lW_Status->count()-1; k++)
 					{
 						if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText()+":"))
 							break;
 					}
-					temps[i][0] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt();
+					temps[i][0] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
 					QCPItemTracer tracer(AutoPages.apAutoPage[i].CustomPlot);
 					tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(0));
 					tracer.setGraphKey((temps[i][0] + temps[i][1] + temps[i][2] + temps[i][3] + temps[i][4]) / 5);
@@ -668,7 +668,7 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 	} else {
 		int versionnumber = QString((QString)reply->readAll()).toInt();
 		if (versionnumber > Settings.Data.versionnumber)
-			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a>");
+			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://github.com/Alia5/FanControllerV2/blob/master/Win32/Release/Fancontroll-installer.exe?raw=true'>Download Here</a>");
 	}
 	reply->deleteLater();
 }

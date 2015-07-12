@@ -107,6 +107,7 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 			readSucces = false;
 		}
 	} else if (readHWiNFOTemps != NULL){
+		QThread::sleep(1); //justin case hwinfo isn't finished with sensorvalues...
 		readHWiNFOTemps(temp, 4096);
 		InfoString = QString::fromLatin1(temp);
 

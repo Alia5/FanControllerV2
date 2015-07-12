@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="FanControllerV2">
+    <file>../icon.png</file>
+  </qresource>
+</RCC>

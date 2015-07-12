@@ -1,3 +1,26 @@
+
+/*
+* Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
+* Author: Peter Repukat
+* Copyright: (c) 2015 Peter Repukat
+* License: GNU GPL v3 (see License.txt)
+
+* QCustomPlot:
+* Author: Emanuel Eichhammer
+* Copyright (C) 2011-2015 Emanuel Eichhammer
+* License: GNU GPL v3 (see License.txt)
+
+* HIDAPI:
+* Author:  Alan Ott  Signal 11 Software
+* Copyright (C) 2009 Alan Ott  Signal 11 Software
+* License: GNU GPL v3 (see License.txt)
+
+* Qt Toolkit:
+* Copyright (C) 2014 Kurt Pattyn <pattyn.kurt@gmail.com>.
+* License: GNU LGPL v3 (see qt-license.txt)
+*/
+
+
 #ifndef FANCONTROLLERV2_H
 #define FANCONTROLLERV2_H
 

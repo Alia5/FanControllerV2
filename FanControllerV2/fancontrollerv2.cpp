@@ -1,3 +1,25 @@
+
+/*
+* Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
+* Author: Peter Repukat
+* Copyright: (c) 2015 Peter Repukat
+* License: GNU GPL v3 (see License.txt)
+
+* QCustomPlot:
+* Author: Emanuel Eichhammer
+* Copyright (C) 2011-2015 Emanuel Eichhammer
+* License: GNU GPL v3 (see License.txt)
+
+* HIDAPI:
+* Author:  Alan Ott  Signal 11 Software
+* Copyright (C) 2009 Alan Ott  Signal 11 Software
+* License: GNU GPL v3 (see License.txt)
+
+* Qt Toolkit:
+* Copyright (C) 2014 Kurt Pattyn <pattyn.kurt@gmail.com>.
+* License: GNU LGPL v3 (see qt-license.txt)
+*/
+
 #include "fancontrollerv2.h"
 
 FanControllerV2::FanControllerV2(QWidget *parent)
@@ -92,7 +114,7 @@ void FanControllerV2::init()
 
 	initGraphs();
 
-	reply = manager.get(QNetworkRequest(QString("http://wtf.flatspot.pictures/fancontroll-updates/version")));
+	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 
@@ -629,7 +651,7 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 	} else {
 		int versionnumber = QString((QString)reply->readAll()).toInt();
 		if (versionnumber > Settings.Data.versionnumber)
-			QMessageBox::information(this, "FanControll", "Update availible! <a href='http://wtf.flatspot.pictures/Fancontroll-installer.exe'>Download Here</a>");
+			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a>");
 	}
 	reply->deleteLater();
 }

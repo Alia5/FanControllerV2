@@ -49,8 +49,9 @@ void FanControllerV2::init()
 
 	trayIcon.setContextMenu(&trayIconMenu);
 
-	trayIcon.setToolTip("Fan Controller v2.00");
+	trayIcon.setToolTip("Fan Controller v" + QString::number(float(Settings.Data.versionnumber/100.f),'g',3));
 	trayIcon.setVisible(true);
+
 
 	connect(&trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
 		this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));

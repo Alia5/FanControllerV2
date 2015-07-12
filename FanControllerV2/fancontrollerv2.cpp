@@ -130,7 +130,7 @@ void FanControllerV2::init()
 
 	initGraphs();
 
-	reply = manager.get(QNetworkRequest(QString("https://github.com/Alia5/FanControllerV2/blob/master/Win32/Release/version?raw=true")));
+	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 

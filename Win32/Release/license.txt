@@ -1,3 +1,7 @@
+This software is distributed under the terms and conditions
+of the GNU GPL version 3.  The full text of GPLv3 is included below. 
+
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

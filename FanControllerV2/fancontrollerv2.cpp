@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -34,10 +33,25 @@ void FanControllerV2::init()
 {
 #ifdef __linux__
 	ui.cb_autorun->setEnabled(false);
+	ui.rB_Aida->setVisible(false);
+	ui.rB_HWiNFO->setVisible(false);
 #endif // __linux
 
-	ui.rB_Manualmode->setChecked(true);
 
+#ifdef _WIN32
+	QFile file("HWiNFO64.dll");				//since HWiNFO64.dll is optional, if its not present, hide the option from using it
+	if (!file.exists())
+		ui.rB_HWiNFO->setVisible(false);
+#endif
+
+	Instance.setKey("Alia5-FanController");
+	Instance.create(1024);
+	Instance.attach();
+	Instance.lock();
+	memset(Instance.data(), NULL, 1024);
+	Instance.unlock();
+
+	ui.rB_Manualmode->setChecked(true);
 
 	ticon = QIcon(":/FanControllerV2/icon.png");
 	trayIcon.setIcon(ticon);
@@ -46,12 +60,10 @@ void FanControllerV2::init()
 
 	ui.centralWidget->setWindowIcon(ticon);
 
-
 	trayIcon.setContextMenu(&trayIconMenu);
 
-	trayIcon.setToolTip("Fan Controller v" + QString::number(float(Settings.Data.versionnumber/100.f),'g',3));
+	trayIcon.setToolTip("Fan Controller v" + QString::number(float(Settings.Data.versionnumber / 100.f), 'g', 3));
 	trayIcon.setVisible(true);
-
 
 	connect(&trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
 		this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
@@ -81,9 +93,8 @@ void FanControllerV2::init()
 			temps[i][j] = 50;
 		}
 	}
-	
-	device.init();
 
+	device.init();
 
 	ui.cb_autorun->setChecked(Settings.Data.autoRun);
 	ui.cb_startmini->setChecked(Settings.Data.startMini);
@@ -91,7 +102,6 @@ void FanControllerV2::init()
 
 	if (Settings.Data.startMini && device.connected())
 		QTimer::singleShot(0, this, SLOT(hide()));
-
 
 	ui.rB_Aida->setChecked(Settings.Data.useAIDA);
 	if (!ui.rB_Aida->isChecked())
@@ -102,7 +112,6 @@ void FanControllerV2::init()
 	ui.cb_dials->toggled(Settings.Data.useDials);
 	ui.cb_sliders->setChecked(Settings.Data.useSliders);
 	ui.cb_dials->setChecked(Settings.Data.useDials);
-
 
 	this->resize(Settings.Data.winSizeX, Settings.Data.winSizeY);
 
@@ -131,12 +140,10 @@ void FanControllerV2::init()
 	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
-
 }
 
 void FanControllerV2::initGraphs()
 {
-
 	for (int i = 0; i < 120; i++)
 	{
 		graphCpuTemp.append(0);
@@ -148,7 +155,6 @@ void FanControllerV2::initGraphs()
 	ui.customplot->xAxis->setLabel("Time (s)");
 	ui.customplot->addGraph();
 	ui.customplot->graph(0)->setData(graphTime, graphCpuTemp);
-
 }
 
 void FanControllerV2::updateGraphs()
@@ -159,7 +165,7 @@ void FanControllerV2::updateGraphs()
 	for (int i = 0; i < 119; i++)
 	{
 		graphCpuTemp[i] = graphCpuTemp[i + 1];
-		graphTime[i] = graphTime[i + 1] -1;
+		graphTime[i] = graphTime[i + 1] - 1;
 	}
 	graphCpuTemp[119] = cputemp;
 	ui.customplot->graph(0)->setData(graphTime, graphCpuTemp);
@@ -221,10 +227,9 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 		mousepos.setX(AutoPages.apAutoPage[graphnum].CustomPlot->xAxis->pixelToCoord(e->localPos().x()));		//map coords to values
 		mousepos.setY(AutoPages.apAutoPage[graphnum].CustomPlot->yAxis->pixelToCoord(e->localPos().y()));
 
-		if (/*e->type() == QEvent::MouseButtonPress &&*/ mousepos.x() >= -5 && mousepos.x() <= 105 && 
+		if (/*e->type() == QEvent::MouseButtonPress &&*/ mousepos.x() >= -5 && mousepos.x() <= 105 &&
 			mousepos.y() >= -5 && mousepos.y() <= 105)
 		{
-			
 			double xkey = fmod(mousepos.x(), 1);
 			xkey = mousepos.x() - xkey;
 			double value = mousepos.y();
@@ -254,10 +259,9 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 			if (xkey == 0)
 				lowerKey = AutoPages.apAutoPage[graphnum].Data.lowerBound(0);
 			else
-			lowerKey = AutoPages.apAutoPage[graphnum].Data.lowerBound(xkey)-1;
+				lowerKey = AutoPages.apAutoPage[graphnum].Data.lowerBound(xkey) - 1;
 
-			upperKey =  AutoPages.apAutoPage[graphnum].Data.lowerBound(xkey);
-
+			upperKey = AutoPages.apAutoPage[graphnum].Data.lowerBound(xkey);
 
 			if (AutoPages.apAutoPage[graphnum].Data.contains(xkey))
 				upperKey += 1;
@@ -267,7 +271,7 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 			if (value > upperKey.value())
 				value = upperKey.value();
 
-			if (xkey > 0  && value == lowerKey.value() && value == upperKey.value())
+			if (xkey > 0 && value == lowerKey.value() && value == upperKey.value())
 				return;
 			if (upperKey == AutoPages.apAutoPage[graphnum].Data.end())
 				return;
@@ -287,28 +291,35 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 				AutoPages.apAutoPage[graphnum].selectedKey = xkey;
 			}
 
-
 			if (!AutoPages.apAutoPage[graphnum].Data.contains(0))
 				AutoPages.apAutoPage[graphnum].Data.insert(0, value);
 
 			AutoPages.apAutoPage[graphnum].Data.insert(100, 100);			//for safety lets force the user to have 100% at 100°C a bit high... bit just to make a point more or less
 
-
 			QToolTip::showText(e->globalPos(), QString::number(xkey) + QString::fromStdWString(L"°C, ") + QString::number(value, 'g', 3) + "%", this, rect());
 
 			AutoPages.apAutoPage[graphnum].CustomPlot->graph(0)->setData(AutoPages.apAutoPage[graphnum].Data.keys().toVector(), AutoPages.apAutoPage[graphnum].Data.values().toVector());
 			AutoPages.apAutoPage[graphnum].CustomPlot->replot();
-
-		} 
-
+		}
 	}
-
-
 }
 
 void FanControllerV2::update()
 {
 	timer.stop();
+
+	//check if we should show our window from sharedmemory
+	Instance.lock();
+	QString MemString = QString((char*)Instance.data());
+	if (MemString == "ShowWindow")
+	{
+		this->showNormal();
+		this->activateWindow();
+		this->raise();
+		memset(Instance.data(), NULL, 1024);
+	}
+	Instance.unlock();
+
 	//gettemps
 	if (!HWInfo.update())
 	{
@@ -329,9 +340,8 @@ void FanControllerV2::update()
 
 		ui.rB_Manualmode->setChecked(true);
 		ui.rB_Automode->setEnabled(false);
-
-
-	} else {
+	}
+	else {
 		if (ui.rB_Automode->isChecked())
 			wasAuto = true;
 		else if (ui.rB_Automode->isEnabled())
@@ -349,7 +359,7 @@ void FanControllerV2::update()
 			// AUTOSETTINGS
 			if (ui.rB_Automode->isChecked())
 			{
-				for (int j = 0; j < ui.hS_hysterisis->value() -1 ; j++)
+				for (int j = 0; j < ui.hS_hysterisis->value() - 1; j++)
 				{
 					temps[i][j] = temps[i][j + 1];
 				}
@@ -357,9 +367,9 @@ void FanControllerV2::update()
 				if (AutoPages.apAutoPage[i].ComboBox->currentIndex() != -1)
 				{
 					int k;
-					for (k = 0; k < ui.lW_Status->count()-1; k++)
+					for (k = 0; k < ui.lW_Status->count() - 1; k++)
 					{
-						if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText()+":"))
+						if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText() + ":"))
 							break;
 					}
 
@@ -383,11 +393,9 @@ void FanControllerV2::update()
 				}
 			}
 
-
 			// Keep fan off
 			if (StatusPage.fsFanStatus[i].KeepOff->isChecked())
 				StatusPage.fsFanStatus[i].Fanslider->setValue(0);
-
 
 			// MAX TEMP SETTINGS
 			if (ui.lW_Status->count() > 0)
@@ -426,9 +434,7 @@ void FanControllerV2::update()
 	}
 
 	timer.start();
-
 }
-
 
 void FanControllerV2::SliderValChanged(int value)
 {
@@ -442,21 +448,19 @@ void FanControllerV2::SliderValChanged(int value)
 	}
 	StatusPage.fsFanStatus[slidernum].Percentage->setText(QString::number((value / (StatusPage.fsFanStatus[slidernum].Fanslider->maximum() / 100.f))).remove(4, 255).append("%"));
 	StatusPage.fsFanStatus[slidernum].Voltage->setText("~" + QString::number((value + (255 - StatusPage.fsFanStatus[slidernum].Fanslider->maximum())) / 21.25, 'g', 2).append("V"));
-	if (StatusPage.fsFanStatus[slidernum].Percentage->text() == "0%") 
+	if (StatusPage.fsFanStatus[slidernum].Percentage->text() == "0%")
 		StatusPage.fsFanStatus[slidernum].Voltage->setText("0.0V");
 }
 
-
 void FanControllerV2::updatesettings()
 {
-
 	//autorun win32...
 #ifdef _WIN32
 	QSettings RegSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
 		QSettings::NativeFormat);
 	if (ui.cb_autorun->isChecked())
 	{
-		RegSettings.setValue("FanControlV2", QDir::currentPath().remove("/platforms").replace("FanControlV2", "FanControllV2").replace("/", "\\") + "\\FanControllerV2.exe");
+		RegSettings.setValue("FanControlV2", QDir::currentPath().remove("/platforms").replace("/", "\\") + "\\FanControllerV2.exe");
 	}
 	else {
 		RegSettings.remove("FanControlV2");
@@ -488,7 +492,6 @@ void FanControllerV2::updatesettings()
 	Settings.Data.fan_hysterisis = ui.hS_hysterisis->value();
 
 	Settings.WriteSettings();
-
 }
 
 void FanControllerV2::on_tW_Tabs_tabBarClicked(int n)
@@ -512,7 +515,7 @@ void FanControllerV2::startCalibration()
 			calibrationHelp.waitsec[i] = true;
 		}
 	}
-	else 
+	else
 	{
 		StatusPage.fsFanStatus[ui.sB_Rst_FanNum->value() - 1].Fanslider->setMaximum(255);
 		calibrationHelp.shouldCalibrate[ui.sB_Cali_FanNum->value() - 1] = true;
@@ -547,17 +550,16 @@ void FanControllerV2::resetCalibration()
 	StatusPage.fsFanStatus[ui.sB_Rst_FanNum->value() - 1].Fanslider->setValue(255);
 	Settings.Data.CalibrationData[ui.sB_Rst_FanNum->value() - 1].calibrated = false;
 	updatesettings();
-
 }
 
 void FanControllerV2::manualCalibration()
 {
-	Settings.Data.CalibrationData[ui.sB_ManCali_FanNum->value() -1 ].value = StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value()  - 1].Fanslider->value();
-	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() -1 ].Fanslider->setMaximum(255 - StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value()  -1].Fanslider->value());
-	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() -1 ].Fanslider->setValue(1);
-	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() -1 ].Fanslider->setEnabled(true);
-	Settings.Data.CalibrationData[ui.sB_ManCali_FanNum->value() -1 ].calibrated = true;
-	calibrationHelp.shouldCalibrate[ui.sB_ManCali_FanNum->value()  -1] = false;
+	Settings.Data.CalibrationData[ui.sB_ManCali_FanNum->value() - 1].value = StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() - 1].Fanslider->value();
+	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() - 1].Fanslider->setMaximum(255 - StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() - 1].Fanslider->value());
+	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() - 1].Fanslider->setValue(1);
+	StatusPage.fsFanStatus[ui.sB_ManCali_FanNum->value() - 1].Fanslider->setEnabled(true);
+	Settings.Data.CalibrationData[ui.sB_ManCali_FanNum->value() - 1].calibrated = true;
+	calibrationHelp.shouldCalibrate[ui.sB_ManCali_FanNum->value() - 1] = false;
 	updatesettings();
 }
 
@@ -573,14 +575,12 @@ void FanControllerV2::calibrateFan()
 			allfalse = false;
 			break;
 		}
-			
 	}
 
 	for (int i = 0; i < 6; i++)
 	{
 		if (calibrationHelp.shouldCalibrate[i])
 		{
-
 			StatusPage.fsFanStatus[i].Fanslider->setEnabled(false);		//prevent user interactions
 			int rpm = StatusPage.fsFanStatus[i].RPM->text().remove(" RPM").toInt();
 			//spin the fan up initially to check if there is a fan connected, then let the fan stop and wait additional 30 seconds, just to be safe!
@@ -629,7 +629,7 @@ void FanControllerV2::calibrateFan()
 						StatusPage.fsFanStatus[i].Fanslider->setValue(0);
 						calibrationHelp.shouldCalibrate[i] = false;
 						StatusPage.fsFanStatus[i].Fanslider->setEnabled(true);
-						QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i+1));
+						QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i + 1));
 					}
 					else
 					{
@@ -637,7 +637,7 @@ void FanControllerV2::calibrateFan()
 						StatusPage.fsFanStatus[i].Fanslider->setValue(calibrationHelp.value[i]);
 					}
 				}
-				else 
+				else
 				{
 					//as sa safety feature, if the fan reports some rpm.. we wait a second and see if it still reports a rpm value
 					if (!calibrationHelp.waitsec[i])
@@ -648,7 +648,7 @@ void FanControllerV2::calibrateFan()
 						StatusPage.fsFanStatus[i].Fanslider->setEnabled(true);
 						Settings.Data.CalibrationData[i].calibrated = true;
 						calibrationHelp.shouldCalibrate[i] = false;
-						trayIcon.showMessage("FanControll", "Calibration for Fan " + QString::number(i+1) + " successful", QSystemTrayIcon::Information, 5000);
+						trayIcon.showMessage("FanControll", "Calibration for Fan " + QString::number(i + 1) + " successful", QSystemTrayIcon::Information, 5000);
 						updatesettings();
 					}
 					else
@@ -657,7 +657,6 @@ void FanControllerV2::calibrateFan()
 					}
 				}
 			}
-
 		}
 	}
 
@@ -682,33 +681,36 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 	QUrl url = reply->url();
 	if (reply->error()) {
 		QMessageBox::warning(this, "FanControll", "Couldn't check for updates!");
-	} else {
+	}
+	else {
 		int versionnumber = QString((QString)reply->readAll()).toInt();
 		if (versionnumber > Settings.Data.versionnumber)
-			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://github.com/Alia5/FanControllerV2/blob/master/Win32/Release/Fancontroll-installer.exe?raw=true'>Download Here</a>");
+			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a><br />"
+				"If you have a Version prior to 2.06 installed, please uninstall it first before upgrading!<br />"
+				"You arer currently running Version: " + QString::number(float(Settings.Data.versionnumber / 100.f), 'g', 3));
 	}
 	reply->deleteLater();
 }
 
 void FanControllerV2::about()
 {
-
 	QMessageBox msgBox(this);
 	msgBox.setWindowTitle("Help / About");
 	msgBox.setTextFormat(Qt::RichText);   //this is what makes the links clickable
-	msgBox.setText("This FanController project  was created by my desire to to have a custom FanController-Hardware, which has 6 channels,<br />" 
-		"is usb - controlled, and gets its temperatues from the hardware - sensors instead of some crappy temperature fingers you attach to a heatsink<br />" 
-		"this is the controll application for my usb fan controller.<br />" 
-		"You can find the hardware-part <a href='https://github.com/Alia5/atmega328p_6_channel_usb_fancontroller'>here</a><br />" 
-		"<br / >" 
-		"if you got this application from the original author, you most likeley know everything about this there is to know<br />" 
+	msgBox.setText("This FanController project  was created by my desire to to have a custom FanController-Hardware, which has 6 channels,<br />"
+		"is usb - controlled, and gets its temperatues from the hardware - sensors instead of some crappy temperature fingers you attach to a heatsink<br />"
+		"this is the controll application for my usb fan controller.<br />"
+		"You can find the hardware-part <a href='https://github.com/Alia5/atmega328p_6_channel_usb_fancontroller'>here</a><br />"
+		"<br / >"
+		"if you got this application from the original author, you most likeley know everything about this there is to know<br />"
 		"else, if you have any questions you can <a href='https://github.com/Alia5/'>contact me</a> for any help.<br />"
 		"This project is Licensed under GPLv3<br /><br />"
 		"Third Party Licences:<br />"
 		"Qt: LGPLv3<br />"
 		"HIDAPI: GPLv3<br />"
 		"QCustomPlot: GPLv3<br /><br />"
-		"You can find more information about the licenses in the application-directory in the corresponding files");
+		"You can find more information about the licenses in the application-directory in the corresponding files<br /><br />" 
+		"Version: " + QString::number(float(Settings.Data.versionnumber / 100.f), 'g', 3));
 	msgBox.exec();
 }
 

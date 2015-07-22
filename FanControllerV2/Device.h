@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -21,7 +20,6 @@
 */
 
 #pragma once
-
 
 #include <QMessageBox>
 #include "hid/hidapi.h"
@@ -64,9 +62,7 @@ private:
 
 	void disconnect_on_error();
 
-
 	QMessageBox msgbox;
 	QMessageBox msgbox2;
 	bool noDevice = false;
 };
-

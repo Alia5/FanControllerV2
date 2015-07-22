@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -22,7 +21,6 @@
 
 #include "HWInfo.h"
 
-
 HWInfo::HWInfo()
 {
 	box.setWindowTitle("FanController");
@@ -35,12 +33,10 @@ HWInfo::HWInfo()
 #endif
 }
 
-
 HWInfo::~HWInfo()
 {
 	delete[] tempValues;
 }
-
 
 bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::AutoPages& autoPages)
 {
@@ -62,14 +58,16 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 		sharedMemory.setNativeKey("AIDA64_SensorValues");
 		if (sharedMemory.attach(QSharedMemory::AccessMode::ReadOnly))
 		{
+			sharedMemory.lock();
 			InfoString = QString((char*)sharedMemory.data());
+			sharedMemory.unlock();
 			sharedMemory.detach();
 			sensorValues = InfoString.count("<temp>");
 			if (tempValues == NULL)
 				tempValues = new QString[sensorValues];
 			for (int i = 0; i < sensorValues; i++)
 			{
-				tempValues[i] = InfoString.section("<temp>", i+1, i+1);
+				tempValues[i] = InfoString.section("<temp>", i + 1, i + 1);
 				tempValues[i].remove("/");
 
 				TemperatureEntry = tempValues[i].section("<label>", 1, 1) + ": " + tempValues[i].section("<value>", 1, 1) + QString::fromStdWString(L"°C");
@@ -80,11 +78,10 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 				{
 					QString boxentry = TemperatureEntry;
 					boxentry.chop(6);
-					if (boxentry.at(boxentry.length()-1) == ':')
+					if (boxentry.at(boxentry.length() - 1) == ':')
 						boxentry.chop(1);
 					autoPages.apAutoPage[j].ComboBox->addItem(boxentry);
 				}
-
 			}
 			for (int i = 0; i < sensorValues; i++)
 			{
@@ -96,7 +93,7 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 			}
 			for (int j = 0; j < 6; j++)
 			{
-				if (!(Settings->Data.AutoPages.apAutoPage[j].Item == "UNINIT")) //mind the "!"...
+				if ((Settings->Data.AutoPages.apAutoPage[j].Item != "UNINIT")) 
 				{
 					int index;
 					for (index = 0; index < autoPages.apAutoPage[j].ComboBox->count(); index++)
@@ -111,10 +108,12 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 			}
 
 			readSucces = true;
-		} else {
+		}
+		else {
 			readSucces = false;
 		}
-	} else if (readHWiNFOTemps != NULL){
+	}
+	else if (readHWiNFOTemps != NULL) {
 		QThread::sleep(1); //justin case hwinfo isn't finished with sensorvalues...
 		readHWiNFOTemps(temp, 4096);
 		InfoString = QString::fromLatin1(temp);
@@ -128,11 +127,9 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 		}
 		if (InfoString == "CLOSED")					//either HWiNFO64 or the sensor panel is closed
 		{
-
 			readSucces = false;
 			return readSucces;
 		}
-
 
 		sensorValues = InfoString.count("<sep>");
 		if (tempValues == NULL)
@@ -175,7 +172,7 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 		}
 		for (int j = 0; j < 6; j++)
 		{
-			if (!(Settings->Data.AutoPages.apAutoPage[j].Item == "UNINIT")) //mind the "!"...
+			if ((Settings->Data.AutoPages.apAutoPage[j].Item != "UNINIT")) 
 			{
 				int index;
 				for (index = 0; index < autoPages.apAutoPage[j].ComboBox->count(); index++)
@@ -216,7 +213,7 @@ bool HWInfo::update()
 				tempValues = NULL;
 				sensorValues = 0;
 				lW_Status->clear();
-				return init(*Settings,lW_Status, *AutoPages);
+				return init(*Settings, lW_Status, *AutoPages);
 			}
 
 			for (int i = 0; i < sensorValues; i++)
@@ -230,7 +227,8 @@ bool HWInfo::update()
 			}
 			readSucces = true;
 			retry = true;
-		} else {
+		}
+		else {
 			if (!errorShown)
 			{
 				if (retry)
@@ -240,20 +238,21 @@ bool HWInfo::update()
 					return update();
 				}
 
-					if (!errorShown)
-					{
-						box.setText("Error while reading data from AIDA64!");
-						box.show();
-					}
-					errorShown = true;
-					delete[] tempValues;
-					tempValues = NULL;
-					sensorValues = 0;
-					lW_Status->clear();
+				if (!errorShown)
+				{
+					box.setText("Error while reading data from AIDA64!");
+					box.show();
+				}
+				errorShown = true;
+				delete[] tempValues;
+				tempValues = NULL;
+				sensorValues = 0;
+				lW_Status->clear();
 			}
 			readSucces = false;
 		}
-	} else if (readHWiNFOTemps != NULL) {
+	}
+	else if (readHWiNFOTemps != NULL) {
 		memset(temp, NULL, 4096);
 		readHWiNFOTemps(temp, 4096);
 		InfoString = QString::fromLatin1(temp);
@@ -266,24 +265,22 @@ bool HWInfo::update()
 				QThread::msleep(100);
 				return update();
 			}
-				
 
-				if (!errorShown)
-				{
-					box.setText("Error while reading data from HWiNFO64!");
-					box.show();
-				}
-				readSucces = false;
-				errorShown = true;
-				delete[] tempValues;
-				tempValues = NULL;
-				sensorValues = 0;
-				lW_Status->clear();
-				return readSucces;
+			if (!errorShown)
+			{
+				box.setText("Error while reading data from HWiNFO64!");
+				box.show();
+			}
+			readSucces = false;
+			errorShown = true;
+			delete[] tempValues;
+			tempValues = NULL;
+			sensorValues = 0;
+			lW_Status->clear();
+			return readSucces;
 		}
-		if (InfoString == "CLOSED")	
+		if (InfoString == "CLOSED")
 		{
-
 			if (retry)
 			{
 				retry = false;
@@ -291,18 +288,18 @@ bool HWInfo::update()
 				return update();
 			}
 
-				if (!errorShown)
-				{
-					box.setText("HWiNFOs Sensor-panel is closed, or HWiNFO is!");
-					box.show();
-				}
-				readSucces = false;
-				errorShown = true;
-				delete[] tempValues;
-				tempValues = NULL;
-				sensorValues = 0;
-				lW_Status->clear();
-				return readSucces;
+			if (!errorShown)
+			{
+				box.setText("HWiNFOs Sensor-panel is closed, or HWiNFO is!");
+				box.show();
+			}
+			readSucces = false;
+			errorShown = true;
+			delete[] tempValues;
+			tempValues = NULL;
+			sensorValues = 0;
+			lW_Status->clear();
+			return readSucces;
 		}
 
 		if (sensorValues != InfoString.count("<sep>"))		//if we have new hardware at runtime (eg, e-sata stuff, we need to reinit..) //also if we switch sensor source or something else goes wrong
@@ -329,7 +326,6 @@ bool HWInfo::update()
 			readSucces = true;
 			retry = true;
 		}
-
 	}
 	if (readSucces)
 		errorShown = false;

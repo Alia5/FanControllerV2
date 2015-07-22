@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -19,7 +18,6 @@
 * Copyright (C) The Qt Company
 * License: GNU LGPL v3 (see qt-license.txt)
 */
-
 
 #ifndef FANCONTROLLERV2_H
 #define FANCONTROLLERV2_H
@@ -42,11 +40,12 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
+#include <QSharedMemory>
+
 #include "Device.h"
 #include "ui_fan.h"
 #include "SettingsHandler.h"
 #include "HWInfo.h"
-
 
 class FanControllerV2 : public QMainWindow
 {
@@ -99,10 +98,12 @@ private:
 	bool wasAuto = true;
 	int temps[6][10];			//  [fan][temp] enough for hysterisis of 10
 
+	QSharedMemory Instance;
+
 protected:
 	void closeEvent(QCloseEvent *event);
 
-private slots:
+	private slots:
 	void iconActivated(QSystemTrayIcon::ActivationReason reason);
 	void programClose();
 	void restoreSize();
@@ -131,7 +132,6 @@ public:
 	{
 		return &trayIcon;
 	}
-
 };
 
 #endif // FANCONTROLLERV2_H

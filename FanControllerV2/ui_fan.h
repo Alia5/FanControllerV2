@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -19,7 +18,6 @@
 * Copyright (C) The Qt Company
 * License: GNU LGPL v3 (see qt-license.txt)
 */
-
 
 #pragma once
 
@@ -62,6 +60,4 @@ public:
 	};
 
 	static void initAutoPage(Ui::FanControllerV2Class& UI, AutoPages& fapStatusPage);
-
 };
-

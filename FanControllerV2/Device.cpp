@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -22,19 +21,16 @@
 
 #include "Device.h"
 
-
 Device::Device()
 {
 	msgbox.setWindowTitle("FanController");
 	msgbox2.setWindowTitle("FanController");
 }
 
-
 Device::~Device()
 {
 	close();
 }
-
 
 bool Device::init()
 {
@@ -49,8 +45,6 @@ bool Device::init()
 
 	return noDevice;
 }
-
-
 
 bool Device::connected()
 {
@@ -80,7 +74,8 @@ bool Device::update(UpdateValues& FanValues)
 			if (FanValues.FanValues[i] == 0)
 			{
 				buf[j] = 0x01;					//0x01 is off! not zero!
-			} else {
+			}
+			else {
 				buf[j] = FanValues.FanValues[i];
 			}
 		}
@@ -109,8 +104,8 @@ bool Device::update(UpdateValues& FanValues)
 		{
 			FanValues.RPMValues[i] = buf[j] * 30;	//you guessed it. max rpm = 255*30 = 7650;
 		}
-
-	} else {
+	}
+	else {
 		noDevice = true;
 		return false;
 	}

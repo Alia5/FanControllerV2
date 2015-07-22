@@ -55,9 +55,9 @@ section "install"
 	# Files added here should be removed by the uninstaller (see section "uninstall")
 	file "FanControllerV2.exe"
 	file "hidapi.dll"
-	file "icudt53.dll"
-	file "icuin53.dll"
-	file "icuuc53.dll"
+	file "icudt54.dll"
+	file "icuin54.dll"
+	file "icuuc54.dll"
 	file "Qt5Core.dll"
 	file "Qt5Gui.dll"
 	file "Qt5Widgets.dll"
@@ -66,7 +66,7 @@ section "install"
 	file "readme.txt"
 	file "license.txt"
 	file "qt-license.txt"
-	file "vcredist_sp1_x86.exe"
+	file "vcredist_x86.exe"
 	setOutPath $INSTDIR\platforms
 	file "platforms\qwindows.dll"
 	# Add any other files for the install directory (license files, app data, etc) here
@@ -120,9 +120,9 @@ section "uninstall"
 	# Remove files
 	delete $INSTDIR\FanControllerV2.exe
 	delete $INSTDIR\hidapi.dll
-	delete $INSTDIR\icudt53.dll
-	delete $INSTDIR\icuin53.dll
-	delete $INSTDIR\icuuc53.dll
+	delete $INSTDIR\icudt54.dll
+	delete $INSTDIR\icuin54.dll
+	delete $INSTDIR\icuuc54.dll
 	delete $INSTDIR\Qt5Core.dll
 	delete $INSTDIR\Qt5Gui.dll
 	delete $INSTDIR\Qt5Widgets.dll
@@ -131,7 +131,7 @@ section "uninstall"
 	delete $INSTDIR\readme.txt
 	delete $INSTDIR\license.txt
 	delete $INSTDIR\qt-license.txt
-	delete $INSTDIR\vcredist_sp1_x86.exe
+	delete $INSTDIR\vcredist_x86.exe
 	delete $INSTDIR\platforms\qwindows.dll
 	
 	delete $PROFILE\AppData\Roaming\FanControllerV2\automode.dat

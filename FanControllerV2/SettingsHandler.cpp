@@ -65,6 +65,7 @@ void SettingsHandler::ReadSettings()
 	//let this sit here for at least until version 206 / 207
 	if (Data.versionnumber == 203)
 	{
+		CreateSettings();
 		QMessageBox::warning(0, "FanControll", "Please check the \"React to\"-box on your Fanpages as they are set uncorrectly due to the update!\nSorry for the inconvinience");
 	}
 

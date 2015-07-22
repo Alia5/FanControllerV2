@@ -66,7 +66,8 @@ section "install"
 	file "readme.txt"
 	file "license.txt"
 	file "qt-license.txt"
-	file "vcredist_x86.exe"
+	file "vc_redist_2013_x86.exe"
+	file "vc_redist_2015_x86.exe"
 	setOutPath $INSTDIR\platforms
 	file "platforms\qwindows.dll"
 	# Add any other files for the install directory (license files, app data, etc) here
@@ -131,7 +132,8 @@ section "uninstall"
 	delete $INSTDIR\readme.txt
 	delete $INSTDIR\license.txt
 	delete $INSTDIR\qt-license.txt
-	delete $INSTDIR\vcredist_x86.exe
+	delete $INSTDIR\vc_redist_2013_x86.exe
+	delete $INSTDIR\vc_redist_2015_x86.exe
 	delete $INSTDIR\platforms\qwindows.dll
 	
 	delete $PROFILE\AppData\Roaming\FanControllerV2\automode.dat

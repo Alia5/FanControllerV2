@@ -31,7 +31,7 @@ public:
 	ui_fan();
 	~ui_fan();
 
-	static struct FanStatus
+	struct FanStatus
 	{
 		QSlider* Fanslider;
 		QLabel* Percentage;
@@ -40,23 +40,23 @@ public:
 		QCheckBox* KeepOff;
 	};
 
-	static struct FanStatusPage
+	struct FanStatusPage
 	{
 		FanStatus fsFanStatus[6];
 	};
 
 	static void initStatus(Ui::FanControllerV2Class& UI, FanStatusPage& fspStatusPage);
 
-	static struct AutoPage
+	struct AutoPage
 	{
-		int ComboBoxIndex;
+		QString Item;
 		QComboBox *ComboBox;
 		QCustomPlot *CustomPlot;
 		QMap<double, double> Data;
 		double selectedKey;
 	};
 
-	static struct AutoPages
+	struct AutoPages
 	{
 		AutoPage apAutoPage[6];
 	};

@@ -1,4 +1,3 @@
-
 /*
 * Project: FanControlV2 host apllication for 6_channel_usb_fancontroller
 * Author: Peter Repukat
@@ -28,24 +27,23 @@
 
 #include "ui_fan.h"
 
-#define VersionNumber 203
+#define VersionNumber 204
 
 class SettingsHandler
 {
 private:
-	static struct FanCalibration
+	struct FanCalibration
 	{
 		bool calibrated;
 		int value;
 	};
-
 
 	QString settingspath;
 	void CreateSettings();
 
 public:
 
-	static struct SettingsData
+	struct SettingsData
 	{
 		int versionnumber;
 		bool autoRun;
@@ -60,6 +58,7 @@ public:
 		int winSizeY;
 		FanCalibration CalibrationData[6];
 		ui_fan::AutoPages AutoPages;
+		int fan_hysterisis;
 	};
 
 	SettingsHandler();
@@ -69,6 +68,4 @@ public:
 
 	void ReadSettings();
 	void WriteSettings();
-
 };
-

@@ -96,8 +96,16 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 			}
 			for (int j = 0; j < 6; j++)
 			{
-				if (Settings->Data.AutoPages.apAutoPage[j].ComboBoxIndex >= 0)
-					autoPages.apAutoPage[j].ComboBox->setCurrentIndex(Settings->Data.AutoPages.apAutoPage[j].ComboBoxIndex);
+				if (!(Settings->Data.AutoPages.apAutoPage[j].Item == "UNINIT")) //mind the "!"...
+				{
+					int index;
+					for (index = 0; index < autoPages.apAutoPage[j].ComboBox->count(); index++)
+					{
+						if (autoPages.apAutoPage[j].ComboBox->itemText(index) == Settings->Data.AutoPages.apAutoPage[j].Item)
+							break;
+					}
+					autoPages.apAutoPage[j].ComboBox->setCurrentIndex(index);
+				}
 				else
 					autoPages.apAutoPage[j].ComboBox->setCurrentIndex(Settings->Data.indexOfCPUTemp);
 			}
@@ -167,10 +175,18 @@ bool HWInfo::init(SettingsHandler& settings, QListWidget* lw_status, ui_fan::Aut
 		}
 		for (int j = 0; j < 6; j++)
 		{
-			if (Settings->Data.AutoPages.apAutoPage[j].ComboBoxIndex >= 0)
-				autoPages.apAutoPage[j].ComboBox->setCurrentIndex(Settings->Data.AutoPages.apAutoPage[j].ComboBoxIndex);
+			if (!(Settings->Data.AutoPages.apAutoPage[j].Item == "UNINIT")) //mind the "!"...
+			{
+				int index;
+				for (index = 0; index < autoPages.apAutoPage[j].ComboBox->count(); index++)
+				{
+					if (autoPages.apAutoPage[j].ComboBox->itemText(index) == Settings->Data.AutoPages.apAutoPage[j].Item)
+						break;
+				}
+				autoPages.apAutoPage[j].ComboBox->setCurrentIndex(index);
+			}
 			else
-				autoPages.apAutoPage[j].ComboBox->setCurrentIndex(Settings->Data.indexOfCPUTemp - indexOffset);
+				autoPages.apAutoPage[j].ComboBox->setCurrentIndex(Settings->Data.indexOfCPUTemp);
 		}
 
 		readSucces = true;
@@ -213,9 +229,17 @@ bool HWInfo::update()
 				lW_Status->item(i)->setToolTip(TemperatureEntry);
 			}
 			readSucces = true;
+			retry = true;
 		} else {
 			if (!errorShown)
 			{
+				if (retry)
+				{
+					retry = false;
+					QThread::msleep(100);
+					return update();
+				}
+
 					if (!errorShown)
 					{
 						box.setText("Error while reading data from AIDA64!");
@@ -236,6 +260,13 @@ bool HWInfo::update()
 
 		if (InfoString == "DEAD")					//memory is dead...
 		{
+			if (retry)
+			{
+				retry = false;
+				QThread::msleep(100);
+				return update();
+			}
+				
 
 				if (!errorShown)
 				{
@@ -250,8 +281,16 @@ bool HWInfo::update()
 				lW_Status->clear();
 				return readSucces;
 		}
-		if (InfoString == "CLOSED")					
+		if (InfoString == "CLOSED")	
 		{
+
+			if (retry)
+			{
+				retry = false;
+				QThread::msleep(100);
+				return update();
+			}
+
 				if (!errorShown)
 				{
 					box.setText("HWiNFOs Sensor-panel is closed, or HWiNFO is!");
@@ -288,6 +327,7 @@ bool HWInfo::update()
 
 			lW_Status->item(i)->setToolTip(TemperatureEntry);
 			readSucces = true;
+			retry = true;
 		}
 
 	}

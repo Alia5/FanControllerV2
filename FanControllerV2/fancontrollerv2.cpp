@@ -76,13 +76,11 @@ void FanControllerV2::init()
 		if (Settings.Data.CalibrationData[i].calibrated)
 			StatusPage.fsFanStatus[i].Fanslider->setMaximum(Settings.Data.CalibrationData[i].value);
 
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 10; j++)
 		{
 			temps[i][j] = 50;
 		}
-
 	}
-
 	
 	device.init();
 
@@ -217,7 +215,6 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 			return;
 	}
 
-	//TODO: Implement rest of fcuntion
 	if (e->buttons() == Qt::LeftButton)
 	{
 		QPointF mousepos;			//mouseccords releative to axis, in axisvalues!
@@ -294,7 +291,7 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 			if (!AutoPages.apAutoPage[graphnum].Data.contains(0))
 				AutoPages.apAutoPage[graphnum].Data.insert(0, value);
 
-			AutoPages.apAutoPage[graphnum].Data.insert(100, 100);			//for safety lets force the user to have 100% at 100°C
+			AutoPages.apAutoPage[graphnum].Data.insert(100, 100);			//for safety lets force the user to have 100% at 100°C a bit high... bit just to make a point more or less
 
 
 			QToolTip::showText(e->globalPos(), QString::number(xkey) + QString::fromStdWString(L"°C, ") + QString::number(value, 'g', 3) + "%", this, rect());
@@ -352,10 +349,11 @@ void FanControllerV2::update()
 			// AUTOSETTINGS
 			if (ui.rB_Automode->isChecked())
 			{
-				for (int j = 4; j > 0; j--)
+				for (int j = 0; j < ui.hS_hysterisis->value() -1 ; j++)
 				{
-					temps[i][j] = temps[i][j - 1];
+					temps[i][j] = temps[i][j + 1];
 				}
+
 				if (AutoPages.apAutoPage[i].ComboBox->currentIndex() != -1)
 				{
 					int k;
@@ -364,10 +362,20 @@ void FanControllerV2::update()
 						if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText()+":"))
 							break;
 					}
-					temps[i][0] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
+
+					temps[i][ui.hS_hysterisis->value() - 1] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
+
 					QCPItemTracer tracer(AutoPages.apAutoPage[i].CustomPlot);
 					tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(0));
-					tracer.setGraphKey((temps[i][0] + temps[i][1] + temps[i][2] + temps[i][3] + temps[i][4]) / 5);
+
+					int temp = 0;
+					for (int j = 0; j < ui.hS_hysterisis->value(); j++)
+					{
+						temp += temps[i][j];
+					}
+
+					tracer.setGraphKey(temp / ui.hS_hysterisis->value());
+
 					tracer.setInterpolating(true);
 					tracer.updatePosition();
 					int val = tracer.position->value() / 100.f * StatusPage.fsFanStatus[i].Fanslider->maximum();
@@ -463,7 +471,7 @@ void FanControllerV2::updatesettings()
 	{
 		for (int i = 0; i < 6; i++)
 		{
-			AutoPages.apAutoPage[i].ComboBoxIndex = -1;
+			AutoPages.apAutoPage[i].Item = "UNINIT";
 		}
 		QMessageBox::warning(this, "FanController", "This change resets the \"React to:\" value from \"Automatic settings\"!");
 	}
@@ -476,6 +484,8 @@ void FanControllerV2::updatesettings()
 	Settings.Data.winSizeY = this->size().height();
 
 	Settings.Data.AutoPages = this->AutoPages;
+
+	Settings.Data.fan_hysterisis = ui.hS_hysterisis->value();
 
 	Settings.WriteSettings();
 
@@ -655,7 +665,14 @@ void FanControllerV2::calibrateFan()
 	timer.stop();
 
 	if (allfalse)
+	{
 		timer.start();
+		ui.pB_FanCali->setEnabled(true);
+		ui.pB_FanCaliAll->setEnabled(true);
+		ui.pB_FanRst->setEnabled(true);
+		ui.pB_FanRstAll->setEnabled(true);
+	}
+
 	else
 		QTimer::singleShot(1000, this, SLOT(calibrateFan()));
 }
@@ -708,4 +725,6 @@ FanControllerV2::~FanControllerV2()
 	Settings.Data.winSizeY = this->size().height();
 
 	Settings.Data.AutoPages = this->AutoPages;
+
+	Settings.Data.fan_hysterisis = ui.hS_hysterisis->value();
 }

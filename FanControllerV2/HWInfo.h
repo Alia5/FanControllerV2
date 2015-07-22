@@ -60,6 +60,8 @@ private:
 	typedef void(__cdecl* _readHWiNFOTemps)(char* c_str, int len);
 	_readHWiNFOTemps readHWiNFOTemps = NULL;
 
+	bool retry = true;
+
 public:
 	HWInfo();
 	~HWInfo();

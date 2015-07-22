@@ -1633,16 +1633,16 @@
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>350</height>
+               <height>370</height>
               </size>
              </property>
              <widget class="QGroupBox" name="groupBox">
               <property name="geometry">
                <rect>
-                <x>220</x>
+                <x>210</x>
                 <y>10</y>
                 <width>201</width>
-                <height>91</height>
+                <height>81</height>
                </rect>
               </property>
               <property name="title">
@@ -1652,7 +1652,7 @@
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>30</y>
+                 <y>20</y>
                  <width>181</width>
                  <height>16</height>
                 </rect>
@@ -1665,7 +1665,7 @@
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>50</y>
+                 <y>40</y>
                  <width>181</width>
                  <height>16</height>
                 </rect>
@@ -1678,7 +1678,7 @@
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>70</y>
+                 <y>60</y>
                  <width>181</width>
                  <height>16</height>
                 </rect>
@@ -1705,7 +1705,7 @@
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>250</y>
+                <y>270</y>
                 <width>141</width>
                 <height>31</height>
                </rect>
@@ -1732,7 +1732,7 @@ startup-voltage of Fans</string>
               <property name="geometry">
                <rect>
                 <x>220</x>
-                <y>230</y>
+                <y>290</y>
                 <width>171</width>
                 <height>23</height>
                </rect>
@@ -1751,7 +1751,7 @@ startup-voltage of Fans</string>
               <property name="geometry">
                <rect>
                 <x>220</x>
-                <y>260</y>
+                <y>310</y>
                 <width>141</width>
                 <height>31</height>
                </rect>
@@ -1778,7 +1778,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>200</y>
+                <y>220</y>
                 <width>131</width>
                 <height>23</height>
                </rect>
@@ -1797,7 +1797,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>220</x>
-                <y>110</y>
+                <y>100</y>
                 <width>151</width>
                 <height>17</height>
                </rect>
@@ -1810,7 +1810,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>230</y>
+                <y>250</y>
                 <width>171</width>
                 <height>23</height>
                </rect>
@@ -1829,7 +1829,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>220</x>
-                <y>130</y>
+                <y>120</y>
                 <width>151</width>
                 <height>17</height>
                </rect>
@@ -1855,7 +1855,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>350</x>
-                <y>200</y>
+                <y>260</y>
                 <width>42</width>
                 <height>22</height>
                </rect>
@@ -1871,7 +1871,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>220</x>
-                <y>200</y>
+                <y>260</y>
                 <width>131</width>
                 <height>23</height>
                </rect>
@@ -1903,7 +1903,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>140</x>
-                <y>200</y>
+                <y>220</y>
                 <width>42</width>
                 <height>22</height>
                </rect>
@@ -1951,7 +1951,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>140</x>
-                <y>309</y>
+                <y>319</y>
                 <width>42</width>
                 <height>22</height>
                </rect>
@@ -1967,7 +1967,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>309</y>
+                <y>319</y>
                 <width>131</width>
                 <height>23</height>
                </rect>
@@ -1986,7 +1986,7 @@ of Fans back to 0V</string>
               <property name="geometry">
                <rect>
                 <x>10</x>
-                <y>330</y>
+                <y>340</y>
                 <width>171</width>
                 <height>31</height>
                </rect>
@@ -1999,14 +1999,14 @@ of Fans back to 0V</string>
              <widget class="QLabel" name="l_about">
               <property name="geometry">
                <rect>
-                <x>310</x>
+                <x>330</x>
                 <y>350</y>
-                <width>111</width>
+                <width>91</width>
                 <height>16</height>
                </rect>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;file://readme.txt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;About this application&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;file://readme.txt&quot;&gt;&lt;span style=&quot; font-size:7pt; text-decoration: underline; color:#0000ff;&quot;&gt;About this application&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
              <widget class="QCheckBox" name="cb_waitfor">
@@ -2023,6 +2023,86 @@ of Fans back to 0V</string>
               </property>
               <property name="text">
                <string>Wait for AIDA64 / HWiNFO</string>
+              </property>
+             </widget>
+             <widget class="QSlider" name="hS_hysterisis">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>190</y>
+                <width>201</width>
+                <height>22</height>
+               </rect>
+              </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>10</number>
+              </property>
+              <property name="pageStep">
+               <number>2</number>
+              </property>
+              <property name="value">
+               <number>5</number>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="invertedAppearance">
+               <bool>false</bool>
+              </property>
+              <property name="invertedControls">
+               <bool>false</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_12">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>160</y>
+                <width>81</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Fan-Hysteresis:</string>
+              </property>
+             </widget>
+             <widget class="QSpinBox" name="sB_hysterisis">
+              <property name="geometry">
+               <rect>
+                <x>300</x>
+                <y>160</y>
+                <width>42</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>10</number>
+              </property>
+              <property name="value">
+               <number>5</number>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_13">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>210</y>
+                <width>141</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>How fast the fans will react
+1=fastest, 10=slowest</string>
               </property>
              </widget>
             </widget>
@@ -2663,8 +2743,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>323</x>
@@ -2679,8 +2759,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -2695,8 +2775,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>262</x>
-     <y>143</y>
+     <x>264</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>675</x>
@@ -2727,8 +2807,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -2743,8 +2823,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>184</x>
@@ -2759,8 +2839,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -2807,8 +2887,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>50</y>
+     <x>171</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
      <x>445</x>
@@ -2823,8 +2903,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>50</y>
+     <x>93</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>449</x>
@@ -2839,8 +2919,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>184</x>
@@ -2855,8 +2935,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>50</y>
+     <x>93</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>684</x>
@@ -2871,8 +2951,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>50</y>
+     <x>93</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>673</x>
@@ -2903,8 +2983,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>50</y>
+     <x>93</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>447</x>
@@ -2919,8 +2999,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>250</x>
-     <y>169</y>
+     <x>252</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>679</x>
@@ -2951,8 +3031,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>253</x>
@@ -2967,8 +3047,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>50</y>
+     <x>93</x>
+     <y>54</y>
     </hint>
     <hint type="destinationlabel">
      <x>448</x>
@@ -2983,8 +3063,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>254</x>
@@ -3031,8 +3111,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -3047,8 +3127,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>323</x>
@@ -3063,8 +3143,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>169</y>
+     <x>291</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -3111,8 +3191,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>149</y>
+     <x>291</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -3191,8 +3271,8 @@ of Fans back to 0V</string>
    <slot>manualCalibration()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>126</x>
-     <y>341</y>
+     <x>128</x>
+     <y>364</y>
     </hint>
     <hint type="destinationlabel">
      <x>679</x>
@@ -3229,6 +3309,38 @@ of Fans back to 0V</string>
     <hint type="destinationlabel">
      <x>578</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sB_hysterisis</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>hS_hysterisis</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>327</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>310</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hS_hysterisis</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sB_hysterisis</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>402</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>186</y>
     </hint>
    </hints>
   </connection>

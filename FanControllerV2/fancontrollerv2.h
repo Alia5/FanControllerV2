@@ -87,7 +87,7 @@ private:
 	QNetworkAccessManager manager;
 	QNetworkReply *reply;
 
-	static struct FcalibrationHelp
+	struct FcalibrationHelp
 	{
 		bool shouldCalibrate[6];
 		int togglefull[6];
@@ -97,7 +97,7 @@ private:
 	FcalibrationHelp calibrationHelp;
 
 	bool wasAuto = true;
-	int temps[6][5];
+	int temps[6][10];			//  [fan][temp] enough for hysterisis of 10
 
 protected:
 	void closeEvent(QCloseEvent *event);

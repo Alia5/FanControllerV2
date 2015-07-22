@@ -55,8 +55,20 @@ void SettingsHandler::ReadSettings()
 		CreateSettings();
 	file.open(QIODevice::ReadWrite);
 	filestream >> Data.versionnumber >> Data.autoRun >> Data.startMini >> Data.useAIDA >> Data.maxCPUTemp >> Data.indexOfCPUTemp 
-		>> Data.useSliders >> Data.useDials >> Data.winSizeX >> Data.winSizeY >> Data.waitfor;		//autorun, startmini, useAIDA, maxCPUTemp
+		>> Data.useSliders >> Data.useDials >> Data.winSizeX >> Data.winSizeY >> Data.waitfor >> Data.fan_hysterisis;		//autorun, startmini, useAIDA, maxCPUTemp
 	file.close();	
+
+	/////////
+	
+	//consider prompting user for clearing settings here, IF settings end up being not backwards compatible
+
+	//let this sit here for at least until version 206 / 207
+	if (Data.versionnumber == 203)
+	{
+		QMessageBox::warning(0, "FanControll", "Please check the \"React to\"-box on your Fanpages as they are set uncorrectly due to the update!\nSorry for the inconvinience");
+	}
+
+	/////////
 
 	Data.versionnumber = VersionNumber;
 
@@ -76,7 +88,7 @@ void SettingsHandler::ReadSettings()
 	file.open(QIODevice::ReadWrite);
 	for (int i = 0; i < 6; i++)
 	{
-		filestream >> Data.AutoPages.apAutoPage[i].ComboBoxIndex >> Data.AutoPages.apAutoPage[i].Data;
+		filestream >> Data.AutoPages.apAutoPage[i].Item >> Data.AutoPages.apAutoPage[i].Data;
 	}
 	file.close();
 
@@ -97,14 +109,16 @@ void SettingsHandler::WriteSettings()
 	file.setFileName(settingspath + "/general.dat");
 	file.open(QIODevice::ReadWrite);
 	filestream << VersionNumber << Data.autoRun << Data.startMini << Data.useAIDA << Data.maxCPUTemp << Data.indexOfCPUTemp
-		<< Data.useSliders << Data.useDials << Data.winSizeX << Data.winSizeY << Data.waitfor;		//autorun, startmini, useAIDA, maxCPUTemp, index, winsize
+		<< Data.useSliders << Data.useDials << Data.winSizeX << Data.winSizeY << Data.waitfor << Data.fan_hysterisis;		//autorun, startmini, useAIDA, maxCPUTemp, index, winsize
 	file.close();
 
 	file.setFileName(settingspath + "/automode.dat");
 	file.open(QIODevice::ReadWrite);
+	QString ItemText;
 	for (int i = 0; i < 6; i++)
 	{		
-		filestream << Data.AutoPages.apAutoPage[i].ComboBox->currentIndex() << Data.AutoPages.apAutoPage[i].Data;
+		ItemText = Data.AutoPages.apAutoPage[i].ComboBox->currentText();
+		filestream << ItemText << Data.AutoPages.apAutoPage[i].Data;
 	}
 	file.close();
 
@@ -141,7 +155,7 @@ void SettingsHandler::CreateSettings()
 
 	for (int i = 0; i < 6; i++)
 	{
-		filestream << int(-1) << automode;
+		filestream << QString("UNINIT") << automode;
 	}
 	file.close();
 
@@ -149,7 +163,7 @@ void SettingsHandler::CreateSettings()
 
 	file.setFileName(settingspath + "/general.dat");
 	file.open(QIODevice::ReadWrite);
-	filestream << VersionNumber << (bool)true << (bool)false << (bool)true << 72 << 0 << bool(true) << bool(false) << 680 << 400 << (bool)false;		//versionnumber, autorun, startmini, useAIDA, maxCPUTemp, index, winsize
+	filestream << VersionNumber << (bool)true << (bool)false << (bool)true << 72 << 0 << bool(true) << bool(false) << 680 << 400 << (bool)false << 5;		//versionnumber, autorun, startmini, useAIDA, maxCPUTemp, index, winsize
 	file.close();
 
 }

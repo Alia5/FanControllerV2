@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'fancontrollerv2.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.2
+** Created by: Qt User Interface Compiler version 5.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -167,6 +167,10 @@ public:
     QLabel *label_11;
     QLabel *l_about;
     QCheckBox *cb_waitfor;
+    QSlider *hS_hysterisis;
+    QLabel *label_12;
+    QSpinBox *sB_hysterisis;
+    QLabel *label_13;
     QGridLayout *Layout_Status;
     QSpacerItem *verticalSpacer_6;
     QLabel *l_Status;
@@ -917,66 +921,66 @@ public:
         sizePolicy6.setVerticalStretch(0);
         sizePolicy6.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy6);
-        scrollAreaWidgetContents->setMinimumSize(QSize(0, 350));
+        scrollAreaWidgetContents->setMinimumSize(QSize(0, 370));
         groupBox = new QGroupBox(scrollAreaWidgetContents);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(220, 10, 201, 91));
+        groupBox->setGeometry(QRect(210, 10, 201, 81));
         l_Manufact = new QLabel(groupBox);
         l_Manufact->setObjectName(QStringLiteral("l_Manufact"));
-        l_Manufact->setGeometry(QRect(20, 30, 181, 16));
+        l_Manufact->setGeometry(QRect(20, 20, 181, 16));
         l_Product = new QLabel(groupBox);
         l_Product->setObjectName(QStringLiteral("l_Product"));
-        l_Product->setGeometry(QRect(20, 50, 181, 16));
+        l_Product->setGeometry(QRect(20, 40, 181, 16));
         l_Serial = new QLabel(groupBox);
         l_Serial->setObjectName(QStringLiteral("l_Serial"));
-        l_Serial->setGeometry(QRect(20, 70, 181, 16));
+        l_Serial->setGeometry(QRect(20, 60, 181, 16));
         rB_HWiNFO = new QRadioButton(scrollAreaWidgetContents);
         rB_HWiNFO->setObjectName(QStringLiteral("rB_HWiNFO"));
         rB_HWiNFO->setGeometry(QRect(10, 170, 181, 17));
         label_3 = new QLabel(scrollAreaWidgetContents);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(10, 250, 141, 31));
+        label_3->setGeometry(QRect(10, 270, 141, 31));
         cb_autorun = new QCheckBox(scrollAreaWidgetContents);
         cb_autorun->setObjectName(QStringLiteral("cb_autorun"));
         cb_autorun->setGeometry(QRect(10, 10, 131, 17));
         pB_FanRstAll = new QPushButton(scrollAreaWidgetContents);
         pB_FanRstAll->setObjectName(QStringLiteral("pB_FanRstAll"));
-        pB_FanRstAll->setGeometry(QRect(220, 230, 171, 23));
+        pB_FanRstAll->setGeometry(QRect(220, 290, 171, 23));
         pB_FanRstAll->setAutoFillBackground(true);
         pB_FanRstAll->setStyleSheet(QStringLiteral(""));
         label_4 = new QLabel(scrollAreaWidgetContents);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(220, 260, 141, 31));
+        label_4->setGeometry(QRect(220, 310, 141, 31));
         cb_startmini = new QCheckBox(scrollAreaWidgetContents);
         cb_startmini->setObjectName(QStringLiteral("cb_startmini"));
         cb_startmini->setGeometry(QRect(10, 30, 101, 17));
         pB_FanCali = new QPushButton(scrollAreaWidgetContents);
         pB_FanCali->setObjectName(QStringLiteral("pB_FanCali"));
-        pB_FanCali->setGeometry(QRect(10, 200, 131, 23));
+        pB_FanCali->setGeometry(QRect(10, 220, 131, 23));
         pB_FanCali->setAutoFillBackground(true);
         pB_FanCali->setStyleSheet(QStringLiteral(""));
         cb_sliders = new QCheckBox(scrollAreaWidgetContents);
         cb_sliders->setObjectName(QStringLiteral("cb_sliders"));
-        cb_sliders->setGeometry(QRect(220, 110, 151, 17));
+        cb_sliders->setGeometry(QRect(220, 100, 151, 17));
         pB_FanCaliAll = new QPushButton(scrollAreaWidgetContents);
         pB_FanCaliAll->setObjectName(QStringLiteral("pB_FanCaliAll"));
-        pB_FanCaliAll->setGeometry(QRect(10, 230, 171, 23));
+        pB_FanCaliAll->setGeometry(QRect(10, 250, 171, 23));
         pB_FanCaliAll->setAutoFillBackground(true);
         pB_FanCaliAll->setStyleSheet(QStringLiteral(""));
         cb_dials = new QCheckBox(scrollAreaWidgetContents);
         cb_dials->setObjectName(QStringLiteral("cb_dials"));
-        cb_dials->setGeometry(QRect(220, 130, 151, 17));
+        cb_dials->setGeometry(QRect(220, 120, 151, 17));
         rB_Aida = new QRadioButton(scrollAreaWidgetContents);
         rB_Aida->setObjectName(QStringLiteral("rB_Aida"));
         rB_Aida->setGeometry(QRect(10, 150, 141, 17));
         sB_Rst_FanNum = new QSpinBox(scrollAreaWidgetContents);
         sB_Rst_FanNum->setObjectName(QStringLiteral("sB_Rst_FanNum"));
-        sB_Rst_FanNum->setGeometry(QRect(350, 200, 42, 22));
+        sB_Rst_FanNum->setGeometry(QRect(350, 260, 42, 22));
         sB_Rst_FanNum->setMinimum(1);
         sB_Rst_FanNum->setMaximum(6);
         pB_FanRst = new QPushButton(scrollAreaWidgetContents);
         pB_FanRst->setObjectName(QStringLiteral("pB_FanRst"));
-        pB_FanRst->setGeometry(QRect(220, 200, 131, 23));
+        pB_FanRst->setGeometry(QRect(220, 260, 131, 23));
         pB_FanRst->setAutoFillBackground(true);
         pB_FanRst->setStyleSheet(QStringLiteral(""));
         label = new QLabel(scrollAreaWidgetContents);
@@ -984,7 +988,7 @@ public:
         label->setGeometry(QRect(10, 70, 121, 21));
         sB_Cali_FanNum = new QSpinBox(scrollAreaWidgetContents);
         sB_Cali_FanNum->setObjectName(QStringLiteral("sB_Cali_FanNum"));
-        sB_Cali_FanNum->setGeometry(QRect(140, 200, 42, 22));
+        sB_Cali_FanNum->setGeometry(QRect(140, 220, 42, 22));
         sB_Cali_FanNum->setMinimum(1);
         sB_Cali_FanNum->setMaximum(6);
         label_2 = new QLabel(scrollAreaWidgetContents);
@@ -997,23 +1001,46 @@ public:
         sB_MaxTemp->setValue(75);
         sB_ManCali_FanNum = new QSpinBox(scrollAreaWidgetContents);
         sB_ManCali_FanNum->setObjectName(QStringLiteral("sB_ManCali_FanNum"));
-        sB_ManCali_FanNum->setGeometry(QRect(140, 309, 42, 22));
+        sB_ManCali_FanNum->setGeometry(QRect(140, 319, 42, 22));
         sB_ManCali_FanNum->setMinimum(1);
         sB_ManCali_FanNum->setMaximum(6);
         pB_FanCaliMan = new QPushButton(scrollAreaWidgetContents);
         pB_FanCaliMan->setObjectName(QStringLiteral("pB_FanCaliMan"));
-        pB_FanCaliMan->setGeometry(QRect(10, 309, 131, 23));
+        pB_FanCaliMan->setGeometry(QRect(10, 319, 131, 23));
         pB_FanCaliMan->setAutoFillBackground(true);
         pB_FanCaliMan->setStyleSheet(QStringLiteral(""));
         label_11 = new QLabel(scrollAreaWidgetContents);
         label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setGeometry(QRect(10, 330, 171, 31));
+        label_11->setGeometry(QRect(10, 340, 171, 31));
         l_about = new QLabel(scrollAreaWidgetContents);
         l_about->setObjectName(QStringLiteral("l_about"));
-        l_about->setGeometry(QRect(310, 350, 111, 16));
+        l_about->setGeometry(QRect(330, 350, 91, 16));
         cb_waitfor = new QCheckBox(scrollAreaWidgetContents);
         cb_waitfor->setObjectName(QStringLiteral("cb_waitfor"));
         cb_waitfor->setGeometry(QRect(10, 50, 151, 17));
+        hS_hysterisis = new QSlider(scrollAreaWidgetContents);
+        hS_hysterisis->setObjectName(QStringLiteral("hS_hysterisis"));
+        hS_hysterisis->setGeometry(QRect(220, 190, 201, 22));
+        hS_hysterisis->setMouseTracking(false);
+        hS_hysterisis->setMinimum(1);
+        hS_hysterisis->setMaximum(10);
+        hS_hysterisis->setPageStep(2);
+        hS_hysterisis->setValue(5);
+        hS_hysterisis->setOrientation(Qt::Horizontal);
+        hS_hysterisis->setInvertedAppearance(false);
+        hS_hysterisis->setInvertedControls(false);
+        label_12 = new QLabel(scrollAreaWidgetContents);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setGeometry(QRect(220, 160, 81, 21));
+        sB_hysterisis = new QSpinBox(scrollAreaWidgetContents);
+        sB_hysterisis->setObjectName(QStringLiteral("sB_hysterisis"));
+        sB_hysterisis->setGeometry(QRect(300, 160, 42, 21));
+        sB_hysterisis->setMinimum(1);
+        sB_hysterisis->setMaximum(10);
+        sB_hysterisis->setValue(5);
+        label_13 = new QLabel(scrollAreaWidgetContents);
+        label_13->setObjectName(QStringLiteral("label_13"));
+        label_13->setGeometry(QRect(220, 210, 141, 31));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_4->addWidget(scrollArea);
@@ -1215,6 +1242,8 @@ public:
         QObject::connect(pB_FanCaliMan, SIGNAL(clicked()), FanControllerV2Class, SLOT(manualCalibration()));
         QObject::connect(l_about, SIGNAL(linkActivated(QString)), FanControllerV2Class, SLOT(about()));
         QObject::connect(cb_waitfor, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(sB_hysterisis, SIGNAL(valueChanged(int)), hS_hysterisis, SLOT(setValue(int)));
+        QObject::connect(hS_hysterisis, SIGNAL(valueChanged(int)), sB_hysterisis, SLOT(setValue(int)));
 
         tW_Tabs->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
@@ -1290,11 +1319,14 @@ public:
         pB_FanCaliMan->setText(QApplication::translate("FanControllerV2Class", "Manually calibrate fan", 0));
         label_11->setText(QApplication::translate("FanControllerV2Class", "Manually set the startup-voltage\n"
 " to the current one", 0));
-        l_about->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><a href=\"file://readme.txt\"><span style=\" text-decoration: underline; color:#0000ff;\">About this application</span></a></p></body></html>", 0));
+        l_about->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><a href=\"file://readme.txt\"><span style=\" font-size:7pt; text-decoration: underline; color:#0000ff;\">About this application</span></a></p></body></html>", 0));
 #ifndef QT_NO_TOOLTIP
         cb_waitfor->setToolTip(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO upon startup", 0));
 #endif // QT_NO_TOOLTIP
         cb_waitfor->setText(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO", 0));
+        label_12->setText(QApplication::translate("FanControllerV2Class", "Fan-Hysteresis:", 0));
+        label_13->setText(QApplication::translate("FanControllerV2Class", "How fast the fans will react\n"
+"1=fastest, 10=slowest", 0));
         tW_Tabs->setTabText(tW_Tabs->indexOf(Settingstab), QApplication::translate("FanControllerV2Class", "Settings", 0));
         l_Status->setText(QApplication::translate("FanControllerV2Class", "Hardware Status", 0));
         l_Transparency->setText(QApplication::translate("FanControllerV2Class", "UI-Transparency", 0));

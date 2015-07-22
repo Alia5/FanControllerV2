@@ -39,7 +39,7 @@ Device::~Device()
 bool Device::init()
 {
 	devicehandle = hid_open(0x16c0, 0x27d9, NULL);
-
+	noDevice = false;
 	if (devicehandle == NULL)
 	{
 		noDevice = true;

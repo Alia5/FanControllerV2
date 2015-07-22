@@ -31,13 +31,13 @@ class Device
 public:
 	Device();
 	~Device();
-	static struct UpdateValues
+	struct UpdateValues
 	{
 		int FanValues[6];
 		int RPMValues[6];
 	};
 
-	static struct deviceinfo
+	struct deviceinfo
 	{
 		QString Manufacturer;
 		QString Product;

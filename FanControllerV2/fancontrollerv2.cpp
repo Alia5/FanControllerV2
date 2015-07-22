@@ -622,14 +622,14 @@ void FanControllerV2::calibrateFan()
 			//slowly ramp the fan up, and check if it started spinning
 			if (calibrationHelp.togglefull[i] == -1)
 			{
-				if (rpm < 30)
+				if (rpm < 99)
 				{
 					if (calibrationHelp.value[i] >= 250)
 					{
 						StatusPage.fsFanStatus[i].Fanslider->setValue(0);
 						calibrationHelp.shouldCalibrate[i] = false;
 						StatusPage.fsFanStatus[i].Fanslider->setEnabled(true);
-						QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i));
+						QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i+1));
 					}
 					else
 					{

@@ -1,9 +1,13 @@
 This FanController project  was created by my desire to to have a custom FanController-Hardware, which has 6 channels,
 is usb-controlled, and gets its temperatues from the hardware-sensors instead of some crappy temperature fingers you attach to a heatsink
 this is the controll application for my usb fan controller.
-You can find the hardware-part here: https://github.com/Alia5/atmega328p_6_channel_usb_fancontroller
+You can find the hardware-part (incl. schematics and part-list) here: https://github.com/Alia5/atmega328p_6_channel_usb_fancontroller
 
-if you got this application from the original author, you most likeley know everything about this there is to know
+
+
+
+if you got this application including prebuilt hardware from the original author, you most likeley know everything
+about this there is to know
 else, if you have any questions you can contact me for any help.
 
 You can find compiled binaries, or and .exe-installer package in "Win32/Release" directory

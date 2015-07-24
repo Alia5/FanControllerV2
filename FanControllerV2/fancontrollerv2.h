@@ -78,11 +78,6 @@ private:
 	SettingsHandler Settings;
 	HWInfo HWInfo;
 
-	void initGraphs();
-	void updateGraphs();
-
-	QVector<double> graphCpuTemp, graphTime;
-
 	QNetworkAccessManager manager;
 	QNetworkReply *reply;
 
@@ -99,6 +94,14 @@ private:
 	int temps[6][10];			//  [fan][temp] enough for hysterisis of 10
 
 	QSharedMemory Instance;
+
+
+	QVector<double> graphTemp[6];
+	QVector<double> graphTime[6];
+	QString TempString[6];
+	int TempIndex[6];
+	void initTempGraphs(int Num);
+	void updateTempGraphs();
 
 protected:
 	void closeEvent(QCloseEvent *event);

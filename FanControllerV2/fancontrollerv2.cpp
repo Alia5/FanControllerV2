@@ -80,7 +80,7 @@ void FanControllerV2::init()
 		connect(StatusPage.fsFanStatus[i].Fanslider, SIGNAL(valueChanged(int)), this, SLOT(SliderValChanged(int)));
 		connect(AutoPages.apAutoPage[i].CustomPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(AutoGraphUpdate(QMouseEvent*)));
 		connect(AutoPages.apAutoPage[i].CustomPlot, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(AutoGraphUpdate(QMouseEvent*)));
-		AutoPages.apAutoPage[i].CustomPlot->graph(0)->setData(AutoPages.apAutoPage[i].Data.keys().toVector(), AutoPages.apAutoPage[i].Data.values().toVector());
+		AutoPages.apAutoPage[i].CustomPlot->graph(1)->setData(AutoPages.apAutoPage[i].Data.keys().toVector(), AutoPages.apAutoPage[i].Data.values().toVector());
 		AutoPages.apAutoPage[i].CustomPlot->replot();
 
 		calibrationHelp.shouldCalibrate[i] = false;
@@ -113,6 +113,8 @@ void FanControllerV2::init()
 	ui.cb_sliders->setChecked(Settings.Data.useSliders);
 	ui.cb_dials->setChecked(Settings.Data.useDials);
 
+	ui.hS_hysterisis->setValue(Settings.Data.fan_hysterisis);
+
 	this->resize(Settings.Data.winSizeX, Settings.Data.winSizeY);
 
 	if (Settings.Data.waitfor)
@@ -135,41 +137,65 @@ void FanControllerV2::init()
 	timer.setInterval(1000);
 	timer.start();
 
-	initGraphs();
-
 	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 }
 
-void FanControllerV2::initGraphs()
+
+void FanControllerV2::initTempGraphs(int Num)
 {
-	for (int i = 0; i < 120; i++)
+	graphTemp[Num].clear();
+	graphTime[Num].clear();
+	for (int i = 0; i < 101; i++)
 	{
-		graphCpuTemp.append(0);
-		graphTime.append(120);
+		graphTemp[Num].append(0);
+		graphTime[Num].append(100);
 	}
-	ui.customplot->yAxis->setRange(0, Settings.Data.maxCPUTemp);
-	ui.customplot->yAxis->setLabel(QString::fromStdWString(L"CPU-Temp (°C)"));
-	ui.customplot->xAxis->setRange(0, 120);
-	ui.customplot->xAxis->setLabel("Time (s)");
-	ui.customplot->addGraph();
-	ui.customplot->graph(0)->setData(graphTime, graphCpuTemp);
+	AutoPages.apAutoPage[Num].CustomPlot->graph(0)->setData(graphTime[Num], graphTemp[Num]);
 }
 
-void FanControllerV2::updateGraphs()
+void FanControllerV2::updateTempGraphs()
 {
-	QString cpustring = ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text();
-	cpustring.chop(2);
-	int cputemp = cpustring.remove(0, cpustring.length() - 3).remove(' ').toInt();
-	for (int i = 0; i < 119; i++)
+	for (int j = 0; j < 6; j++)
 	{
-		graphCpuTemp[i] = graphCpuTemp[i + 1];
-		graphTime[i] = graphTime[i + 1] - 1;
+		if (TempString[j] != AutoPages.apAutoPage[j].ComboBox->currentText())
+		{
+			initTempGraphs(j);
+			TempString[j] = AutoPages.apAutoPage[j].ComboBox->currentText();
+			for (TempIndex[j] = 0; TempIndex[j] < ui.lW_Status->count(); TempIndex[j]++)
+			{
+				if (ui.lW_Status->item(TempIndex[j])->text().remove(ui.lW_Status->item(TempIndex[j])->text().length() - 5, ui.lW_Status->item(TempIndex[j])->text().length()).remove(':').remove(' ') 
+					== TempString[j].remove(' '))			
+						break;
+			}
+		}
+
+		TempString[j] = ui.lW_Status->item(TempIndex[j])->text();
+		TempString[j].chop(2);
+		int Temp = TempString[j].remove(0, TempString[j].length() - 3).remove(' ').toInt();
+
+
+		for (int i = 0; i < 100; i++)
+		{
+			graphTemp[j][i] = graphTemp[j][i + 1];
+			graphTime[j][i] = graphTime[j][i + 1] - 1;
+			if (i == 0 && j == 0)
+			{
+				int time[101];
+				for (int k = 0; k < 101; k++)
+				{
+					time[k] = graphTime[j][k];
+				}
+				int bla = 0;
+			}
+		}
+
+		graphTemp[j][100] = Temp;
+		AutoPages.apAutoPage[j].CustomPlot->graph(0)->setData(graphTime[j], graphTemp[j]);
+		AutoPages.apAutoPage[j].CustomPlot->replot();
+		TempString[j] = AutoPages.apAutoPage[j].ComboBox->currentText();
 	}
-	graphCpuTemp[119] = cputemp;
-	ui.customplot->graph(0)->setData(graphTime, graphCpuTemp);
-	ui.customplot->replot();
 }
 
 void FanControllerV2::closeEvent(QCloseEvent *event)
@@ -298,7 +324,7 @@ void FanControllerV2::AutoGraphUpdate(QMouseEvent *e)
 
 			QToolTip::showText(e->globalPos(), QString::number(xkey) + QString::fromStdWString(L"°C, ") + QString::number(value, 'g', 3) + "%", this, rect());
 
-			AutoPages.apAutoPage[graphnum].CustomPlot->graph(0)->setData(AutoPages.apAutoPage[graphnum].Data.keys().toVector(), AutoPages.apAutoPage[graphnum].Data.values().toVector());
+			AutoPages.apAutoPage[graphnum].CustomPlot->graph(1)->setData(AutoPages.apAutoPage[graphnum].Data.keys().toVector(), AutoPages.apAutoPage[graphnum].Data.values().toVector());
 			AutoPages.apAutoPage[graphnum].CustomPlot->replot();
 		}
 	}
@@ -349,9 +375,13 @@ void FanControllerV2::update()
 		ui.rB_Automode->setEnabled(true);
 		if (wasAuto)
 			ui.rB_Automode->setChecked(true);
-		updateGraphs();
 	}
 
+
+	//update graphs
+	updateTempGraphs();
+
+	//calculate fanvaluesvalues
 	for (int i = 0; i < 6; i++)
 	{
 		if (!calibrationHelp.shouldCalibrate[i])
@@ -376,7 +406,7 @@ void FanControllerV2::update()
 					temps[i][ui.hS_hysterisis->value() - 1] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
 
 					QCPItemTracer tracer(AutoPages.apAutoPage[i].CustomPlot);
-					tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(0));
+					tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(1));
 
 					int temp = 0;
 					for (int j = 0; j < ui.hS_hysterisis->value(); j++)
@@ -686,7 +716,7 @@ void FanControllerV2::downloadFinished(QNetworkReply *reply)
 		int versionnumber = QString((QString)reply->readAll()).toInt();
 		if (versionnumber > Settings.Data.versionnumber)
 			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a><br />"
-				"If you have a Version prior to 2.06 installed, please uninstall it first before upgrading!<br />"
+				"Update Version: " + QString::number(float(versionnumber / 100.f), 'g', 3) + "<br />"
 				"You arer currently running Version: " + QString::number(float(Settings.Data.versionnumber / 100.f), 'g', 3));
 	}
 	reply->deleteLater();

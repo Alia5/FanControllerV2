@@ -56,13 +56,6 @@ void SettingsHandler::ReadSettings()
 
 	//consider prompting user for clearing settings here, IF settings end up being not backwards compatible
 
-	//let this sit here for at least until version 207
-	if (Data.versionnumber == 203)
-	{
-		CreateSettings();
-		QMessageBox::warning(0, "FanControll", "Please check your Settings since they are set uncorrectly due to the update!\nSorry for the inconvinience");
-	}
-
 	/////////
 
 	Data.versionnumber = VersionNumber;

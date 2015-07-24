@@ -103,39 +103,79 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_5;
     QComboBox *coB_Fan_1;
+    QHBoxLayout *horizontalLayout_9;
+    QVBoxLayout *verticalLayout_13;
+    QLabel *label_14;
     QCustomPlot *cPl_Fan_1;
+    QVBoxLayout *verticalLayout_14;
+    QSpacerItem *verticalSpacer_2;
+    QLabel *label_15;
+    QSpacerItem *verticalSpacer_7;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_7;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_6;
     QComboBox *coB_Fan_2;
+    QHBoxLayout *horizontalLayout_10;
+    QVBoxLayout *verticalLayout_12;
+    QLabel *label_17;
     QCustomPlot *cPl_Fan_2;
+    QVBoxLayout *verticalLayout_15;
+    QSpacerItem *verticalSpacer_9;
+    QLabel *label_16;
+    QSpacerItem *verticalSpacer_8;
     QWidget *tab_3;
     QVBoxLayout *verticalLayout_8;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_7;
     QComboBox *coB_Fan_3;
+    QHBoxLayout *horizontalLayout_11;
+    QVBoxLayout *verticalLayout_16;
+    QLabel *label_18;
     QCustomPlot *cPl_Fan_3;
+    QVBoxLayout *verticalLayout_17;
+    QSpacerItem *verticalSpacer_10;
+    QLabel *label_19;
+    QSpacerItem *verticalSpacer_11;
     QWidget *tab_4;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_8;
     QComboBox *coB_Fan_4;
+    QHBoxLayout *horizontalLayout_12;
+    QVBoxLayout *verticalLayout_18;
+    QLabel *label_20;
     QCustomPlot *cPl_Fan_4;
+    QVBoxLayout *verticalLayout_19;
+    QSpacerItem *verticalSpacer_12;
+    QLabel *label_21;
+    QSpacerItem *verticalSpacer_13;
     QWidget *tab_5;
     QVBoxLayout *verticalLayout_10;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_9;
     QComboBox *coB_Fan_5;
+    QHBoxLayout *horizontalLayout_13;
+    QVBoxLayout *verticalLayout_20;
+    QLabel *label_22;
     QCustomPlot *cPl_Fan_5;
+    QVBoxLayout *verticalLayout_21;
+    QSpacerItem *verticalSpacer_14;
+    QLabel *label_23;
+    QSpacerItem *verticalSpacer_15;
     QWidget *tab_6;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_10;
     QComboBox *coB_Fan_6;
+    QHBoxLayout *horizontalLayout_14;
+    QVBoxLayout *verticalLayout_22;
+    QLabel *label_24;
     QCustomPlot *cPl_Fan_6;
-    QWidget *graphTab;
-    QCustomPlot *customplot;
+    QVBoxLayout *verticalLayout_23;
+    QSpacerItem *verticalSpacer_16;
+    QLabel *label_25;
+    QSpacerItem *verticalSpacer_17;
     QWidget *Settingstab;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_4;
@@ -195,9 +235,21 @@ public:
             FanControllerV2Class->setObjectName(QStringLiteral("FanControllerV2Class"));
         FanControllerV2Class->resize(680, 400);
         FanControllerV2Class->setMinimumSize(QSize(680, 215));
+        QPalette palette;
+        QBrush brush(QColor(255, 255, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        FanControllerV2Class->setPalette(palette);
         QIcon icon;
         icon.addFile(QStringLiteral(":/FanControllerV2/icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         FanControllerV2Class->setWindowIcon(icon);
+        FanControllerV2Class->setAutoFillBackground(false);
+        FanControllerV2Class->setStyleSheet(QStringLiteral(""));
         centralWidget = new QWidget(FanControllerV2Class);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -680,6 +732,7 @@ public:
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -699,12 +752,52 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_2);
 
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        verticalLayout_13 = new QVBoxLayout();
+        verticalLayout_13->setSpacing(0);
+        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
+        label_14 = new QLabel(tab_1);
+        label_14->setObjectName(QStringLiteral("label_14"));
+        label_14->setMinimumSize(QSize(60, 15));
+        label_14->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_13->addWidget(label_14);
+
         cPl_Fan_1 = new QCustomPlot(tab_1);
         cPl_Fan_1->setObjectName(QStringLiteral("cPl_Fan_1"));
         cPl_Fan_1->setMinimumSize(QSize(0, 0));
         cPl_Fan_1->setAutoFillBackground(true);
 
-        verticalLayout_5->addWidget(cPl_Fan_1);
+        verticalLayout_13->addWidget(cPl_Fan_1);
+
+
+        horizontalLayout_9->addLayout(verticalLayout_13);
+
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setSpacing(0);
+        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_14->addItem(verticalSpacer_2);
+
+        label_15 = new QLabel(tab_1);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setMinimumSize(QSize(34, 20));
+        label_15->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_14->addWidget(label_15);
+
+        verticalSpacer_7 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_14->addItem(verticalSpacer_7);
+
+
+        horizontalLayout_9->addLayout(verticalLayout_14);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_9);
 
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
@@ -713,6 +806,7 @@ public:
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalLayout_7->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
@@ -731,11 +825,51 @@ public:
 
         verticalLayout_7->addLayout(horizontalLayout_4);
 
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setSpacing(6);
+        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setSpacing(0);
+        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        label_17 = new QLabel(tab_2);
+        label_17->setObjectName(QStringLiteral("label_17"));
+        label_17->setMinimumSize(QSize(60, 15));
+        label_17->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_12->addWidget(label_17);
+
         cPl_Fan_2 = new QCustomPlot(tab_2);
         cPl_Fan_2->setObjectName(QStringLiteral("cPl_Fan_2"));
         cPl_Fan_2->setAutoFillBackground(true);
 
-        verticalLayout_7->addWidget(cPl_Fan_2);
+        verticalLayout_12->addWidget(cPl_Fan_2);
+
+
+        horizontalLayout_10->addLayout(verticalLayout_12);
+
+        verticalLayout_15 = new QVBoxLayout();
+        verticalLayout_15->setSpacing(6);
+        verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
+        verticalSpacer_9 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_15->addItem(verticalSpacer_9);
+
+        label_16 = new QLabel(tab_2);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setMinimumSize(QSize(34, 20));
+        label_16->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_15->addWidget(label_16);
+
+        verticalSpacer_8 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_15->addItem(verticalSpacer_8);
+
+
+        horizontalLayout_10->addLayout(verticalLayout_15);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_10);
 
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -744,6 +878,7 @@ public:
         verticalLayout_8->setSpacing(6);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalLayout_8->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
@@ -762,11 +897,51 @@ public:
 
         verticalLayout_8->addLayout(horizontalLayout_5);
 
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(6);
+        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        verticalLayout_16 = new QVBoxLayout();
+        verticalLayout_16->setSpacing(0);
+        verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
+        label_18 = new QLabel(tab_3);
+        label_18->setObjectName(QStringLiteral("label_18"));
+        label_18->setMinimumSize(QSize(60, 15));
+        label_18->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_16->addWidget(label_18);
+
         cPl_Fan_3 = new QCustomPlot(tab_3);
         cPl_Fan_3->setObjectName(QStringLiteral("cPl_Fan_3"));
         cPl_Fan_3->setAutoFillBackground(true);
 
-        verticalLayout_8->addWidget(cPl_Fan_3);
+        verticalLayout_16->addWidget(cPl_Fan_3);
+
+
+        horizontalLayout_11->addLayout(verticalLayout_16);
+
+        verticalLayout_17 = new QVBoxLayout();
+        verticalLayout_17->setSpacing(6);
+        verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
+        verticalSpacer_10 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_17->addItem(verticalSpacer_10);
+
+        label_19 = new QLabel(tab_3);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setMinimumSize(QSize(34, 20));
+        label_19->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_17->addWidget(label_19);
+
+        verticalSpacer_11 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_17->addItem(verticalSpacer_11);
+
+
+        horizontalLayout_11->addLayout(verticalLayout_17);
+
+
+        verticalLayout_8->addLayout(horizontalLayout_11);
 
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
@@ -775,6 +950,7 @@ public:
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalLayout_9->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
@@ -793,11 +969,51 @@ public:
 
         verticalLayout_9->addLayout(horizontalLayout_6);
 
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setSpacing(6);
+        horizontalLayout_12->setObjectName(QStringLiteral("horizontalLayout_12"));
+        verticalLayout_18 = new QVBoxLayout();
+        verticalLayout_18->setSpacing(0);
+        verticalLayout_18->setObjectName(QStringLiteral("verticalLayout_18"));
+        label_20 = new QLabel(tab_4);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setMinimumSize(QSize(60, 15));
+        label_20->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_18->addWidget(label_20);
+
         cPl_Fan_4 = new QCustomPlot(tab_4);
         cPl_Fan_4->setObjectName(QStringLiteral("cPl_Fan_4"));
         cPl_Fan_4->setAutoFillBackground(true);
 
-        verticalLayout_9->addWidget(cPl_Fan_4);
+        verticalLayout_18->addWidget(cPl_Fan_4);
+
+
+        horizontalLayout_12->addLayout(verticalLayout_18);
+
+        verticalLayout_19 = new QVBoxLayout();
+        verticalLayout_19->setSpacing(6);
+        verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
+        verticalSpacer_12 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_19->addItem(verticalSpacer_12);
+
+        label_21 = new QLabel(tab_4);
+        label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setMinimumSize(QSize(34, 20));
+        label_21->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_19->addWidget(label_21);
+
+        verticalSpacer_13 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_19->addItem(verticalSpacer_13);
+
+
+        horizontalLayout_12->addLayout(verticalLayout_19);
+
+
+        verticalLayout_9->addLayout(horizontalLayout_12);
 
         tabWidget->addTab(tab_4, QString());
         tab_5 = new QWidget();
@@ -806,6 +1022,7 @@ public:
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setContentsMargins(11, 11, 11, 11);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        verticalLayout_10->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
@@ -824,11 +1041,51 @@ public:
 
         verticalLayout_10->addLayout(horizontalLayout_7);
 
+        horizontalLayout_13 = new QHBoxLayout();
+        horizontalLayout_13->setSpacing(6);
+        horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
+        verticalLayout_20 = new QVBoxLayout();
+        verticalLayout_20->setSpacing(0);
+        verticalLayout_20->setObjectName(QStringLiteral("verticalLayout_20"));
+        label_22 = new QLabel(tab_5);
+        label_22->setObjectName(QStringLiteral("label_22"));
+        label_22->setMinimumSize(QSize(60, 15));
+        label_22->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_20->addWidget(label_22);
+
         cPl_Fan_5 = new QCustomPlot(tab_5);
         cPl_Fan_5->setObjectName(QStringLiteral("cPl_Fan_5"));
         cPl_Fan_5->setAutoFillBackground(true);
 
-        verticalLayout_10->addWidget(cPl_Fan_5);
+        verticalLayout_20->addWidget(cPl_Fan_5);
+
+
+        horizontalLayout_13->addLayout(verticalLayout_20);
+
+        verticalLayout_21 = new QVBoxLayout();
+        verticalLayout_21->setSpacing(6);
+        verticalLayout_21->setObjectName(QStringLiteral("verticalLayout_21"));
+        verticalSpacer_14 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_21->addItem(verticalSpacer_14);
+
+        label_23 = new QLabel(tab_5);
+        label_23->setObjectName(QStringLiteral("label_23"));
+        label_23->setMinimumSize(QSize(34, 20));
+        label_23->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_21->addWidget(label_23);
+
+        verticalSpacer_15 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_21->addItem(verticalSpacer_15);
+
+
+        horizontalLayout_13->addLayout(verticalLayout_21);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_13);
 
         tabWidget->addTab(tab_5, QString());
         tab_6 = new QWidget();
@@ -837,12 +1094,12 @@ public:
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setContentsMargins(11, 11, 11, 11);
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        verticalLayout_11->setContentsMargins(0, 6, 6, 0);
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
         label_10 = new QLabel(tab_6);
         label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setMinimumSize(QSize(0, 0));
         label_10->setMaximumSize(QSize(50, 20));
 
         horizontalLayout_8->addWidget(label_10);
@@ -856,24 +1113,57 @@ public:
 
         verticalLayout_11->addLayout(horizontalLayout_8);
 
+        horizontalLayout_14 = new QHBoxLayout();
+        horizontalLayout_14->setSpacing(6);
+        horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
+        verticalLayout_22 = new QVBoxLayout();
+        verticalLayout_22->setSpacing(0);
+        verticalLayout_22->setObjectName(QStringLiteral("verticalLayout_22"));
+        label_24 = new QLabel(tab_6);
+        label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setMinimumSize(QSize(60, 15));
+        label_24->setMaximumSize(QSize(60, 15));
+
+        verticalLayout_22->addWidget(label_24);
+
         cPl_Fan_6 = new QCustomPlot(tab_6);
         cPl_Fan_6->setObjectName(QStringLiteral("cPl_Fan_6"));
         cPl_Fan_6->setAutoFillBackground(true);
 
-        verticalLayout_11->addWidget(cPl_Fan_6);
+        verticalLayout_22->addWidget(cPl_Fan_6);
+
+
+        horizontalLayout_14->addLayout(verticalLayout_22);
+
+        verticalLayout_23 = new QVBoxLayout();
+        verticalLayout_23->setSpacing(6);
+        verticalLayout_23->setObjectName(QStringLiteral("verticalLayout_23"));
+        verticalSpacer_16 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_23->addItem(verticalSpacer_16);
+
+        label_25 = new QLabel(tab_6);
+        label_25->setObjectName(QStringLiteral("label_25"));
+        label_25->setMinimumSize(QSize(34, 20));
+        label_25->setMaximumSize(QSize(34, 20));
+
+        verticalLayout_23->addWidget(label_25);
+
+        verticalSpacer_17 = new QSpacerItem(1, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_23->addItem(verticalSpacer_17);
+
+
+        horizontalLayout_14->addLayout(verticalLayout_23);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_14);
 
         tabWidget->addTab(tab_6, QString());
 
         horizontalLayout->addWidget(tabWidget);
 
         tW_Tabs->addTab(autosettings, QString());
-        graphTab = new QWidget();
-        graphTab->setObjectName(QStringLiteral("graphTab"));
-        customplot = new QCustomPlot(graphTab);
-        customplot->setObjectName(QStringLiteral("customplot"));
-        customplot->setGeometry(QRect(10, 10, 411, 191));
-        customplot->setAutoFillBackground(true);
-        tW_Tabs->addTab(graphTab, QString());
         Settingstab = new QWidget();
         Settingstab->setObjectName(QStringLiteral("Settingstab"));
         Settingstab->setMinimumSize(QSize(0, 0));
@@ -893,16 +1183,14 @@ public:
         sizePolicy1.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy1);
         scrollArea->setMinimumSize(QSize(0, 100));
-        QPalette palette;
-        QBrush brush(QColor(255, 255, 255, 255));
-        brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Base, brush);
-        palette.setBrush(QPalette::Active, QPalette::Window, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
-        scrollArea->setPalette(palette);
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        scrollArea->setPalette(palette1);
         scrollArea->setAutoFillBackground(false);
         scrollArea->setStyleSheet(QStringLiteral(""));
         scrollArea->setFrameShape(QFrame::NoFrame);
@@ -1186,64 +1474,61 @@ public:
 
         retranslateUi(FanControllerV2Class);
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_5, SLOT(setDisabled(bool)));
+        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_5, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_6, SLOT(setDisabled(bool)));
-        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_2, SLOT(setDisabled(bool)));
-        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_1, SLOT(setDisabled(bool)));
         QObject::connect(vS_Fan_5, SIGNAL(valueChanged(int)), dial_5, SLOT(setValue(int)));
+        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_2, SLOT(setDisabled(bool)));
         QObject::connect(vS_Fan_6, SIGNAL(valueChanged(int)), dial_6, SLOT(setValue(int)));
+        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_1, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_6, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_3, SLOT(setDisabled(bool)));
-        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_5, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), vS_Fan_4, SLOT(setDisabled(bool)));
         QObject::connect(dial, SIGNAL(valueChanged(int)), vS_Fan_1, SLOT(setValue(int)));
         QObject::connect(dial_4, SIGNAL(valueChanged(int)), vS_Fan_4, SLOT(setValue(int)));
-        QObject::connect(dial_6, SIGNAL(valueChanged(int)), vS_Fan_6, SLOT(setValue(int)));
-        QObject::connect(dial_2, SIGNAL(valueChanged(int)), vS_Fan_2, SLOT(setValue(int)));
-        QObject::connect(dial_3, SIGNAL(valueChanged(int)), vS_Fan_3, SLOT(setValue(int)));
-        QObject::connect(vS_Fan_1, SIGNAL(valueChanged(int)), dial, SLOT(setValue(int)));
-        QObject::connect(vS_Fan_2, SIGNAL(valueChanged(int)), dial_2, SLOT(setValue(int)));
-        QObject::connect(dial_5, SIGNAL(valueChanged(int)), vS_Fan_5, SLOT(setValue(int)));
-        QObject::connect(vS_Fan_3, SIGNAL(valueChanged(int)), dial_3, SLOT(setValue(int)));
-        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_4, SLOT(setDisabled(bool)));
-        QObject::connect(vS_Fan_4, SIGNAL(valueChanged(int)), dial_4, SLOT(setValue(int)));
-        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_5, SLOT(setVisible(bool)));
-        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_6, SLOT(setVisible(bool)));
-        QObject::connect(cb_sliders, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial, SLOT(setDisabled(bool)));
         QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_2, SLOT(setVisible(bool)));
-        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_3, SLOT(setVisible(bool)));
-        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_6, SLOT(setVisible(bool)));
-        QObject::connect(sB_MaxTemp, SIGNAL(editingFinished()), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(tabWidget, SIGNAL(tabBarClicked(int)), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(coB_Fan_1, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(coB_Fan_3, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_3, SLOT(setVisible(bool)));
-        QObject::connect(coB_Fan_5, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(coB_Fan_2, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(rB_HWiNFO, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(coB_Fan_6, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(cb_dials, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_2, SLOT(setDisabled(bool)));
+        QObject::connect(dial_2, SIGNAL(valueChanged(int)), vS_Fan_2, SLOT(setValue(int)));
+        QObject::connect(dial_5, SIGNAL(valueChanged(int)), vS_Fan_5, SLOT(setValue(int)));
+        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_5, SLOT(setVisible(bool)));
+        QObject::connect(vS_Fan_4, SIGNAL(valueChanged(int)), dial_4, SLOT(setValue(int)));
+        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_6, SLOT(setVisible(bool)));
+        QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_3, SLOT(setVisible(bool)));
         QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_4, SLOT(setVisible(bool)));
-        QObject::connect(coB_Fan_4, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_3, SLOT(setVisible(bool)));
         QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_4, SLOT(setVisible(bool)));
+        QObject::connect(cb_sliders, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(cb_dials, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(cb_autorun, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(rB_Aida, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_2, SLOT(setVisible(bool)));
-        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_5, SLOT(setVisible(bool)));
-        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial, SLOT(setVisible(bool)));
-        QObject::connect(cb_startmini, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_6, SLOT(setVisible(bool)));
+        QObject::connect(vS_Fan_3, SIGNAL(valueChanged(int)), dial_3, SLOT(setValue(int)));
+        QObject::connect(dial_6, SIGNAL(valueChanged(int)), vS_Fan_6, SLOT(setValue(int)));
+        QObject::connect(coB_Fan_1, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(sB_MaxTemp, SIGNAL(editingFinished()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(dial_3, SIGNAL(valueChanged(int)), vS_Fan_3, SLOT(setValue(int)));
+        QObject::connect(vS_Fan_2, SIGNAL(valueChanged(int)), dial_2, SLOT(setValue(int)));
+        QObject::connect(tabWidget, SIGNAL(tabBarClicked(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(vS_Fan_1, SIGNAL(valueChanged(int)), dial, SLOT(setValue(int)));
+        QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_4, SLOT(setDisabled(bool)));
         QObject::connect(rB_Automode, SIGNAL(toggled(bool)), dial_3, SLOT(setDisabled(bool)));
         QObject::connect(cb_sliders, SIGNAL(toggled(bool)), vS_Fan_1, SLOT(setVisible(bool)));
         QObject::connect(pB_FanRstAll, SIGNAL(clicked()), FanControllerV2Class, SLOT(resetCalibration()));
-        QObject::connect(pB_FanRst, SIGNAL(clicked()), FanControllerV2Class, SLOT(resetCalibration()));
         QObject::connect(pB_FanCaliAll, SIGNAL(clicked()), FanControllerV2Class, SLOT(startCalibration()));
         QObject::connect(pB_FanCali, SIGNAL(clicked()), FanControllerV2Class, SLOT(startCalibration()));
-        QObject::connect(pB_FanCaliMan, SIGNAL(clicked()), FanControllerV2Class, SLOT(manualCalibration()));
         QObject::connect(l_about, SIGNAL(linkActivated(QString)), FanControllerV2Class, SLOT(about()));
-        QObject::connect(cb_waitfor, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(sB_hysterisis, SIGNAL(valueChanged(int)), hS_hysterisis, SLOT(setValue(int)));
+        QObject::connect(pB_FanCaliMan, SIGNAL(clicked()), FanControllerV2Class, SLOT(manualCalibration()));
+        QObject::connect(pB_FanRst, SIGNAL(clicked()), FanControllerV2Class, SLOT(resetCalibration()));
+        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_2, SLOT(setVisible(bool)));
+        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial, SLOT(setVisible(bool)));
         QObject::connect(hS_hysterisis, SIGNAL(valueChanged(int)), sB_hysterisis, SLOT(setValue(int)));
+        QObject::connect(cb_waitfor, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_5, SLOT(setVisible(bool)));
+        QObject::connect(cb_startmini, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(coB_Fan_2, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(sB_hysterisis, SIGNAL(valueChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
 
         tW_Tabs->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
@@ -1282,19 +1567,30 @@ public:
         label_3la->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p align=\"center\">Keep Fans off? Fan spins up regardless if max. CPU-Temp gets exceeded!</p></body></html>", 0));
         tW_Tabs->setTabText(tW_Tabs->indexOf(statustab), QApplication::translate("FanControllerV2Class", "Status / Manual", 0));
         label_5->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_14->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_15->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0000ff;\"/><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("FanControllerV2Class", "Fan1", 0));
         label_6->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_17->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_16->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("FanControllerV2Class", "Fan2", 0));
         label_7->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_18->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_19->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("FanControllerV2Class", "Fan3", 0));
         label_8->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_20->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_21->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("FanControllerV2Class", "Fan4", 0));
         label_9->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_22->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_23->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("FanControllerV2Class", "Fan5", 0));
         label_10->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
+        label_24->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
+        label_25->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("FanControllerV2Class", "Fan6", 0));
         tW_Tabs->setTabText(tW_Tabs->indexOf(autosettings), QApplication::translate("FanControllerV2Class", "Automatic settings", 0));
-        tW_Tabs->setTabText(tW_Tabs->indexOf(graphTab), QApplication::translate("FanControllerV2Class", "Graphs", 0));
         groupBox->setTitle(QApplication::translate("FanControllerV2Class", "DeviceInfo", 0));
         l_Manufact->setText(QApplication::translate("FanControllerV2Class", "Manufacturer: ", 0));
         l_Product->setText(QApplication::translate("FanControllerV2Class", "Product Name:", 0));

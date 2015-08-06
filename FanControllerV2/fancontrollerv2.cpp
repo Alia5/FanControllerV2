@@ -92,6 +92,7 @@ void FanControllerV2::init()
 		{
 			temps[i][j] = 50;
 		}
+		initTempGraphs(i);
 	}
 
 	device.init();
@@ -374,7 +375,8 @@ void FanControllerV2::update()
 		ui.rB_Manualmode->setChecked(true);
 		ui.rB_Automode->setEnabled(false);
 	}
-	else {
+	else 
+	{
 		if (ui.rB_Automode->isChecked())
 			wasAuto = true;
 		else if (ui.rB_Automode->isEnabled())
@@ -382,11 +384,12 @@ void FanControllerV2::update()
 		ui.rB_Automode->setEnabled(true);
 		if (wasAuto)
 			ui.rB_Automode->setChecked(true);
+
+		//update graphs
+		updateTempGraphs();
+
 	}
 
-
-	//update graphs
-	updateTempGraphs();
 
 	//calculate fanvaluesvalues
 	for (int i = 0; i < 6; i++)

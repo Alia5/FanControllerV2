@@ -86,7 +86,7 @@ void FanControllerV2::init()
 		calibrationHelp.shouldCalibrate[i] = false;
 
 		if (Settings.Data.CalibrationData[i].calibrated)
-			StatusPage.fsFanStatus[i].Fanslider->setMaximum(Settings.Data.CalibrationData[i].value);
+			StatusPage.fsFanStatus[i].Fanslider->setMaximum(255 - Settings.Data.CalibrationData[i].value);
 
 		for (int j = 0; j < 10; j++)
 		{
@@ -171,8 +171,15 @@ void FanControllerV2::updateTempGraphs()
 			}
 		}
 
-		TempString[j] = ui.lW_Status->item(TempIndex[j])->text();
-		TempString[j].chop(2);
+		if (ui.lW_Status->count() >= TempIndex[j])
+		{
+			TempString[j] = ui.lW_Status->item(TempIndex[j])->text();
+			TempString[j].chop(2);
+		}
+		else
+		{
+			TempString[j] = "00000";
+		}
 		int Temp = TempString[j].remove(0, TempString[j].length() - 3).remove(' ').toInt();
 
 
@@ -626,8 +633,9 @@ void FanControllerV2::calibrateFan()
 			case 3:
 				if (rpm < 30)
 				{
-					QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i));
+					QMessageBox::warning(this, "FanControll", "Error! Check Fan-Connection: " + QString::number(i+1));
 					calibrationHelp.shouldCalibrate[i] = false;
+					StatusPage.fsFanStatus[i].Fanslider->setEnabled(true);
 				}
 				calibrationHelp.togglefull[i]++;
 				break;
@@ -652,7 +660,7 @@ void FanControllerV2::calibrateFan()
 			//slowly ramp the fan up, and check if it started spinning
 			if (calibrationHelp.togglefull[i] == -1)
 			{
-				if (rpm < 99)
+				if (rpm < 60)
 				{
 					if (calibrationHelp.value[i] >= 250)
 					{
@@ -669,7 +677,7 @@ void FanControllerV2::calibrateFan()
 				}
 				else
 				{
-					//as sa safety feature, if the fan reports some rpm.. we wait a second and see if it still reports a rpm value
+					//as a safety feature, if the fan reports some rpm.. we wait a second and see if it still reports a rpm value
 					if (!calibrationHelp.waitsec[i])
 					{
 						Settings.Data.CalibrationData[i].value = StatusPage.fsFanStatus[i].Fanslider->value();

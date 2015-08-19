@@ -99,9 +99,12 @@ private:
 	QVector<double> graphTemp[6];
 	QVector<double> graphTime[6];
 	QString TempString[6];
-	int TempIndex[6];
 	void initTempGraphs(int Num);
 	void updateTempGraphs();
+
+
+	bool silent;
+	bool freeze;
 
 protected:
 	void closeEvent(QCloseEvent *event);
@@ -125,6 +128,10 @@ protected:
 	void resetCalibration();
 	void manualCalibration();
 	void calibrateFan();
+
+	void on_pB_silent_clicked();
+	void on_pB_freeze_clicked();
+	void stopFreeze();
 
 	void downloadFinished(QNetworkReply *reply);
 

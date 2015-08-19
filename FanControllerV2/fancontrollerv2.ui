@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
+    <width>750</width>
     <height>400</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>680</width>
+    <width>750</width>
     <height>215</height>
    </size>
   </property>
@@ -2251,7 +2251,7 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>433</width>
+               <width>442</width>
                <height>372</height>
               </rect>
              </property>
@@ -2746,13 +2746,164 @@ of Fans back to 0V</string>
      </widget>
     </item>
     <item>
-     <layout class="QGridLayout" name="Layout_Status" columnstretch="0,0" columnminimumwidth="0,0">
+     <layout class="QGridLayout" name="Layout_Status" columnstretch="0,0">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <property name="spacing">
        <number>0</number>
       </property>
+      <item row="4" column="1">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_24">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QRadioButton" name="rB_Manualmode">
+                   <property name="text">
+                    <string>Manual Mode</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="rB_Automode">
+                   <property name="text">
+                    <string>Automatic  Mode</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pB_silent">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>Sets all fans to the value they would have at 30°C until 65°C CPU-Temp are reached.
+Afterwards the Fans return to automatic-mode.</string>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Silent</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pB_freeze">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>Spins all fans up to 100% for up to 1 minute or CPU-Temp gets below 40°C
+Afterwards the Fans return to automatic-mode.</string>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Freeze</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="l_Transparency">
+               <property name="text">
+                <string>UI-Transparency</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="hS_Transparency">
+               <property name="accessibleName">
+                <string/>
+               </property>
+               <property name="minimum">
+                <number>15</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="sliderPosition">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <spacer name="verticalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>5</width>
+          <height>3</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="0" column="1">
        <spacer name="verticalSpacer_6">
         <property name="orientation">
@@ -2775,22 +2926,6 @@ of Fans back to 0V</string>
          <string>Hardware Status</string>
         </property>
        </widget>
-      </item>
-      <item row="2" column="1">
-       <spacer name="verticalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>3</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item row="3" column="1">
        <widget class="QListWidget" name="lW_Status">
@@ -2831,160 +2966,6 @@ of Fans back to 0V</string>
          <bool>false</bool>
         </property>
        </widget>
-      </item>
-      <item row="4" column="1">
-       <spacer name="verticalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>9</width>
-          <height>9</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="5" column="1">
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="3" column="2">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>5</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLabel" name="l_Transparency">
-          <property name="text">
-           <string>UI-Transparency</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>5</width>
-            <height>5</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="1">
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <widget class="QGroupBox" name="groupBox_2">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border:0;</string>
-            </property>
-            <property name="title">
-             <string/>
-            </property>
-            <property name="flat">
-             <bool>false</bool>
-            </property>
-            <property name="checkable">
-             <bool>false</bool>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_2">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>10</number>
-             </property>
-             <item>
-              <widget class="QRadioButton" name="rB_Manualmode">
-               <property name="text">
-                <string>Manual Mode</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="rB_Automode">
-               <property name="text">
-                <string>Automatic  Mode</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="3" column="1">
-         <widget class="QSlider" name="hS_Transparency">
-          <property name="accessibleName">
-           <string/>
-          </property>
-          <property name="minimum">
-           <number>15</number>
-          </property>
-          <property name="maximum">
-           <number>100</number>
-          </property>
-          <property name="sliderPosition">
-           <number>100</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>5</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
       </item>
      </layout>
     </item>
@@ -3038,8 +3019,8 @@ of Fans back to 0V</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>588</x>
-     <y>328</y>
+     <x>572</x>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -3070,8 +3051,8 @@ of Fans back to 0V</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>581</x>
-     <y>324</y>
+     <x>572</x>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
      <x>376</x>
@@ -3182,8 +3163,8 @@ of Fans back to 0V</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>581</x>
-     <y>324</y>
+     <x>572</x>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
      <x>253</x>
@@ -3230,8 +3211,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -3326,8 +3307,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>323</x>
@@ -3358,8 +3339,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -3374,8 +3355,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>184</x>
@@ -3390,8 +3371,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>253</x>
@@ -3406,8 +3387,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>184</x>
@@ -3422,8 +3403,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>254</x>
@@ -3438,8 +3419,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
-     <y>139</y>
+     <x>265</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>675</x>
@@ -3454,8 +3435,8 @@ of Fans back to 0V</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>159</y>
+     <x>253</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>679</x>
@@ -3502,8 +3483,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -3662,8 +3643,8 @@ of Fans back to 0V</string>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>575</x>
-     <y>321</y>
+     <x>572</x>
+     <y>337</y>
     </hint>
     <hint type="destinationlabel">
      <x>161</x>
@@ -3678,8 +3659,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>139</y>
+     <x>292</x>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -3774,8 +3755,8 @@ of Fans back to 0V</string>
    <slot>manualCalibration()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>128</x>
-     <y>364</y>
+     <x>129</x>
+     <y>363</y>
     </hint>
     <hint type="destinationlabel">
      <x>679</x>
@@ -3806,8 +3787,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -3822,8 +3803,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -3842,8 +3823,8 @@ of Fans back to 0V</string>
      <y>229</y>
     </hint>
     <hint type="destinationlabel">
-     <x>344</x>
-     <y>186</y>
+     <x>343</x>
+     <y>202</y>
     </hint>
    </hints>
   </connection>
@@ -3870,8 +3851,8 @@ of Fans back to 0V</string>
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>291</x>
-     <y>159</y>
+     <x>292</x>
+     <y>158</y>
     </hint>
     <hint type="destinationlabel">
      <x>323</x>
@@ -3923,6 +3904,70 @@ of Fans back to 0V</string>
     </hint>
     <hint type="destinationlabel">
      <x>339</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coB_Fan_3</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FanControllerV2Class</receiver>
+   <slot>updatesettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>247</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coB_Fan_4</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FanControllerV2Class</receiver>
+   <slot>updatesettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coB_Fan_5</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FanControllerV2Class</receiver>
+   <slot>updatesettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>coB_Fan_6</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>FanControllerV2Class</receiver>
+   <slot>updatesettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
      <y>199</y>
     </hint>
    </hints>

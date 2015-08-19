@@ -22,6 +22,7 @@
 #pragma once
 
 #include <QMessageBox>
+#include <QThread>
 #include "hid/hidapi.h"
 
 class Device

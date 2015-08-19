@@ -44,6 +44,9 @@ void FanControllerV2::init()
 		ui.rB_HWiNFO->setVisible(false);
 #endif
 
+	silent = false;
+	freeze = false;
+
 	Instance.setKey("Alia5-FanController");
 	Instance.create(1024);
 	Instance.attach();
@@ -138,7 +141,7 @@ void FanControllerV2::init()
 	timer.setInterval(1000);
 	timer.start();
 
-	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
+	reply = manager.get(QNetworkRequest(QString("http://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 }
@@ -164,24 +167,23 @@ void FanControllerV2::updateTempGraphs()
 		{
 			initTempGraphs(j);
 			TempString[j] = AutoPages.apAutoPage[j].ComboBox->currentText();
-			for (TempIndex[j] = 0; TempIndex[j] < ui.lW_Status->count(); TempIndex[j]++)
-			{
-				if (ui.lW_Status->item(TempIndex[j])->text().remove(ui.lW_Status->item(TempIndex[j])->text().length() - 5, ui.lW_Status->item(TempIndex[j])->text().length()).remove(':').remove(' ') 
-					== TempString[j].remove(' '))			
-						break;
-			}
 		}
 
-		if (ui.lW_Status->count() >= TempIndex[j])
+
+		int Temp;
+
+		if (AutoPages.apAutoPage[j].ComboBox->currentIndex() != -1)
 		{
-			TempString[j] = ui.lW_Status->item(TempIndex[j])->text();
-			TempString[j].chop(2);
+			int k;
+			for (k = 0; k < ui.lW_Status->count() - 1; k++)
+			{
+				if (ui.lW_Status->item(k)->text().contains(TempString[j] + ":"))
+					break;
+			}
+
+			Temp = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
 		}
-		else
-		{
-			TempString[j] = "00000";
-		}
-		int Temp = TempString[j].remove(0, TempString[j].length() - 3).remove(' ').toInt();
+		else Temp = 0;
 
 
 		for (int i = 0; i < 100; i++)
@@ -224,7 +226,7 @@ void FanControllerV2::programClose()
 void FanControllerV2::restoreSize()
 {
 	this->showNormal();
-	this->resize(680, 400);
+	this->resize(750, 400);
 }
 
 void FanControllerV2::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -392,56 +394,95 @@ void FanControllerV2::update()
 
 
 	//calculate fanvaluesvalues
-	for (int i = 0; i < 6; i++)
+	if (!silent && !freeze)
 	{
-		if (!calibrationHelp.shouldCalibrate[i])
+		for (int i = 0; i < 6; i++)
 		{
-			// AUTOSETTINGS
-			if (ui.rB_Automode->isChecked())
+			if (!calibrationHelp.shouldCalibrate[i])
 			{
-				for (int j = 0; j < ui.hS_hysterisis->value() - 1; j++)
+				// AUTOSETTINGS
+				if (ui.rB_Automode->isChecked())
 				{
-					temps[i][j] = temps[i][j + 1];
+					for (int j = 0; j < ui.hS_hysterisis->value() - 1; j++)
+					{
+						temps[i][j] = temps[i][j + 1];
+					}
+
+					if (AutoPages.apAutoPage[i].ComboBox->currentIndex() != -1)
+					{
+						int k;
+						for (k = 0; k < ui.lW_Status->count() - 1; k++)
+						{
+							if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText() + ":"))
+								break;
+						}
+
+						temps[i][ui.hS_hysterisis->value() - 1] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
+
+						QCPItemTracer tracer(AutoPages.apAutoPage[i].CustomPlot);
+						tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(1));
+
+						float temp = 0;
+						for (int j = 0; j < ui.hS_hysterisis->value(); j++)
+						{
+							temp += temps[i][j];
+						}
+
+						tracer.setGraphKey(temp / ui.hS_hysterisis->value());
+
+						tracer.setInterpolating(true);
+						tracer.updatePosition();
+						int val = tracer.position->value() / 100.f * StatusPage.fsFanStatus[i].Fanslider->maximum();
+						StatusPage.fsFanStatus[i].Fanslider->setValue(val);
+					}
 				}
 
-				if (AutoPages.apAutoPage[i].ComboBox->currentIndex() != -1)
+				// Keep fan off
+				if (StatusPage.fsFanStatus[i].KeepOff->isChecked())
+					StatusPage.fsFanStatus[i].Fanslider->setValue(0);
+
+				// MAX TEMP SETTINGS
+				if (ui.lW_Status->count() > 0)
 				{
-					int k;
-					for (k = 0; k < ui.lW_Status->count() - 1; k++)
-					{
-						if (ui.lW_Status->item(k)->text().contains(AutoPages.apAutoPage[i].ComboBox->currentText() + ":"))
-							break;
-					}
-
-					temps[i][ui.hS_hysterisis->value() - 1] = ui.lW_Status->item(k)->text().remove(QRegExp("[^0-9\\d\\s]")).remove(QRegExp("\\ (.*)\\ ")).remove(" ").toInt();
-
+					if (ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt() >= Settings.Data.maxCPUTemp)
+						StatusPage.fsFanStatus[i].Fanslider->setValue(StatusPage.fsFanStatus[i].Fanslider->maximum());
+				}
+			}
+		}
+	} 
+	else
+	{
+		if (silent)
+		{
+			for (int i = 0; i < 6; i++)
+			{
+				if (ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt() >= 65)
+				{
+					silent = false;
+					ui.pB_silent->setText("Silent");
+				}
+				if (!calibrationHelp.shouldCalibrate[i])
+				{
 					QCPItemTracer tracer(AutoPages.apAutoPage[i].CustomPlot);
 					tracer.setGraph(AutoPages.apAutoPage[i].CustomPlot->graph(1));
-
-					int temp = 0;
-					for (int j = 0; j < ui.hS_hysterisis->value(); j++)
-					{
-						temp += temps[i][j];
-					}
-
-					tracer.setGraphKey(temp / ui.hS_hysterisis->value());
-
+					tracer.setGraphKey(30);
 					tracer.setInterpolating(true);
 					tracer.updatePosition();
 					int val = tracer.position->value() / 100.f * StatusPage.fsFanStatus[i].Fanslider->maximum();
 					StatusPage.fsFanStatus[i].Fanslider->setValue(val);
 				}
 			}
-
-			// Keep fan off
-			if (StatusPage.fsFanStatus[i].KeepOff->isChecked())
-				StatusPage.fsFanStatus[i].Fanslider->setValue(0);
-
-			// MAX TEMP SETTINGS
-			if (ui.lW_Status->count() > 0)
+		}
+		if (freeze)
+		{
+			if (ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt() < 40)
+				stopFreeze();
+			for (int i = 0; i < 6; i++)
 			{
-				if (ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt() >= Settings.Data.maxCPUTemp)
+				if (!calibrationHelp.shouldCalibrate[i])
+				{
 					StatusPage.fsFanStatus[i].Fanslider->setValue(StatusPage.fsFanStatus[i].Fanslider->maximum());
+				}
 			}
 		}
 	}
@@ -500,7 +541,7 @@ void FanControllerV2::updatesettings()
 		QSettings::NativeFormat);
 	if (ui.cb_autorun->isChecked())
 	{
-		RegSettings.setValue("FanControlV2", QDir::currentPath().remove("/platforms").replace("/", "\\") + "\\FanControllerV2.exe");
+		RegSettings.setValue("FanControlV2", "\"" + QDir::currentPath().remove("/platforms").replace("/", "\\") + "\\FanControllerV2.exe\"");
 	}
 	else {
 		RegSettings.remove("FanControlV2");
@@ -717,16 +758,41 @@ void FanControllerV2::calibrateFan()
 		QTimer::singleShot(1000, this, SLOT(calibrateFan()));
 }
 
+void FanControllerV2::on_pB_silent_clicked()
+{
+	freeze = false;
+	silent = true;
+	ui.pB_freeze->setText("Freeze");
+	ui.pB_silent->setText("Silencing!");
+}
+
+
+void FanControllerV2::on_pB_freeze_clicked()
+{
+	silent = false;
+	freeze = true;
+	ui.pB_freeze->setText("Freezing!");
+	ui.pB_silent->setText("Silent");
+	QTimer::singleShot(60000, this, SLOT(stopFreeze()));
+}
+
+void FanControllerV2::stopFreeze()
+{
+	freeze = false;
+	ui.pB_freeze->setText("Freeze");
+	ui.pB_silent->setText("Silent");
+}
+
 void FanControllerV2::downloadFinished(QNetworkReply *reply)
 {
 	QUrl url = reply->url();
 	if (reply->error()) {
-		QMessageBox::warning(this, "FanControll", "Couldn't check for updates!");
+		QMessageBox::warning(this, "FanControll", "Couldn't check for updates! \n" + reply->errorString());
 	}
 	else {
 		int versionnumber = QString((QString)reply->readAll()).toInt();
 		if (versionnumber > Settings.Data.versionnumber)
-			QMessageBox::information(this, "FanControll", "Update availible! <a href='https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a><br />"
+			QMessageBox::information(this, "FanControll", "Update availible! <a href='http://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/Fancontroll-installer.exe'>Download Here</a><br />"
 				"Update Version: " + QString::number(float(versionnumber / 100.f), 'g', 3) + "<br />"
 				"You arer currently running Version: " + QString::number(float(Settings.Data.versionnumber / 100.f), 'g', 3));
 	}

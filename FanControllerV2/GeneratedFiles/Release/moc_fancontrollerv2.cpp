@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FanControllerV2_t {
-    QByteArrayData data[25];
-    char stringdata0[341];
+    QByteArrayData data[28];
+    char stringdata0[394];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,10 +50,13 @@ QT_MOC_LITERAL(17, 232, 16), // "startCalibration"
 QT_MOC_LITERAL(18, 249, 16), // "resetCalibration"
 QT_MOC_LITERAL(19, 266, 17), // "manualCalibration"
 QT_MOC_LITERAL(20, 284, 12), // "calibrateFan"
-QT_MOC_LITERAL(21, 297, 16), // "downloadFinished"
-QT_MOC_LITERAL(22, 314, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(23, 329, 5), // "reply"
-QT_MOC_LITERAL(24, 335, 5) // "about"
+QT_MOC_LITERAL(21, 297, 20), // "on_pB_silent_clicked"
+QT_MOC_LITERAL(22, 318, 20), // "on_pB_freeze_clicked"
+QT_MOC_LITERAL(23, 339, 10), // "stopFreeze"
+QT_MOC_LITERAL(24, 350, 16), // "downloadFinished"
+QT_MOC_LITERAL(25, 367, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(26, 382, 5), // "reply"
+QT_MOC_LITERAL(27, 388, 5) // "about"
 
     },
     "FanControllerV2\0iconActivated\0\0"
@@ -64,8 +67,10 @@ QT_MOC_LITERAL(24, 335, 5) // "about"
     "QMouseEvent*\0e\0update\0updatesettings\0"
     "on_tW_Tabs_tabBarClicked\0n\0startCalibration\0"
     "resetCalibration\0manualCalibration\0"
-    "calibrateFan\0downloadFinished\0"
-    "QNetworkReply*\0reply\0about"
+    "calibrateFan\0on_pB_silent_clicked\0"
+    "on_pB_freeze_clicked\0stopFreeze\0"
+    "downloadFinished\0QNetworkReply*\0reply\0"
+    "about"
 };
 #undef QT_MOC_LITERAL
 
@@ -75,7 +80,7 @@ static const uint qt_meta_data_FanControllerV2[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,21 +88,24 @@ static const uint qt_meta_data_FanControllerV2[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   89,    2, 0x08 /* Private */,
-       5,    0,   92,    2, 0x08 /* Private */,
-       6,    0,   93,    2, 0x08 /* Private */,
-       7,    0,   94,    2, 0x08 /* Private */,
-       8,    1,   95,    2, 0x08 /* Private */,
-      10,    1,   98,    2, 0x08 /* Private */,
-      13,    0,  101,    2, 0x08 /* Private */,
-      14,    0,  102,    2, 0x08 /* Private */,
-      15,    1,  103,    2, 0x08 /* Private */,
-      17,    0,  106,    2, 0x08 /* Private */,
-      18,    0,  107,    2, 0x08 /* Private */,
-      19,    0,  108,    2, 0x08 /* Private */,
-      20,    0,  109,    2, 0x08 /* Private */,
-      21,    1,  110,    2, 0x08 /* Private */,
-      24,    0,  113,    2, 0x08 /* Private */,
+       1,    1,  104,    2, 0x08 /* Private */,
+       5,    0,  107,    2, 0x08 /* Private */,
+       6,    0,  108,    2, 0x08 /* Private */,
+       7,    0,  109,    2, 0x08 /* Private */,
+       8,    1,  110,    2, 0x08 /* Private */,
+      10,    1,  113,    2, 0x08 /* Private */,
+      13,    0,  116,    2, 0x08 /* Private */,
+      14,    0,  117,    2, 0x08 /* Private */,
+      15,    1,  118,    2, 0x08 /* Private */,
+      17,    0,  121,    2, 0x08 /* Private */,
+      18,    0,  122,    2, 0x08 /* Private */,
+      19,    0,  123,    2, 0x08 /* Private */,
+      20,    0,  124,    2, 0x08 /* Private */,
+      21,    0,  125,    2, 0x08 /* Private */,
+      22,    0,  126,    2, 0x08 /* Private */,
+      23,    0,  127,    2, 0x08 /* Private */,
+      24,    1,  128,    2, 0x08 /* Private */,
+      27,    0,  131,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -113,7 +121,10 @@ static const uint qt_meta_data_FanControllerV2[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 22,   23,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 25,   26,
     QMetaType::Void,
 
        0        // eod
@@ -138,14 +149,17 @@ void FanControllerV2::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 10: _t->resetCalibration(); break;
         case 11: _t->manualCalibration(); break;
         case 12: _t->calibrateFan(); break;
-        case 13: _t->downloadFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 14: _t->about(); break;
+        case 13: _t->on_pB_silent_clicked(); break;
+        case 14: _t->on_pB_freeze_clicked(); break;
+        case 15: _t->stopFreeze(); break;
+        case 16: _t->downloadFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 17: _t->about(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 13:
+        case 16:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -181,13 +195,13 @@ int FanControllerV2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 18;
     }
     return _id;
 }

@@ -30,12 +30,31 @@ Device::Device()
 Device::~Device()
 {
 	close();
+	hid_exit();
 }
 
 bool Device::init()
 {
-	devicehandle = hid_open(0x16c0, 0x27d9, NULL);
-	noDevice = false;
+
+	hid_device_info *devices = hid_enumerate(0x16c0, 0x27d9);
+
+	QString name = "FanControl";
+
+	while (name != QString::fromWCharArray(devices->product_string))
+	{
+		if (devices->next == NULL)
+			break;
+		devices = devices->next;
+	}
+	if (name == QString::fromWCharArray(devices->product_string))
+	{
+		devicehandle = hid_open(0x16c0, 0x27d9, devices->serial_number);
+		hid_set_nonblocking(devicehandle, 1);
+		noDevice = false;
+	}
+
+	hid_free_enumeration(devices);
+
 	if (devicehandle == NULL)
 	{
 		noDevice = true;
@@ -60,7 +79,24 @@ bool Device::update(UpdateValues& FanValues)
 {
 	if (noDevice)
 	{
-		devicehandle = hid_open(0x16c0, 0x27d9, NULL);
+		hid_device_info *devices = hid_enumerate(0x16c0, 0x27d9);
+
+		QString name = "FanControl";
+
+		while (name != QString::fromWCharArray(devices->product_string))
+		{
+			if (devices->next == NULL)
+				break;
+			devices = devices->next;
+		}
+		if (name == QString::fromWCharArray(devices->product_string))
+		{
+			devicehandle = hid_open(0x16c0, 0x27d9, devices->serial_number);
+			hid_set_nonblocking(devicehandle, 1);
+			noDevice = false;
+		}
+
+		hid_free_enumeration(devices);
 	}
 
 	if (devicehandle != NULL)
@@ -87,7 +123,13 @@ bool Device::update(UpdateValues& FanValues)
 			return false;
 		}
 
-		hid_read(devicehandle, buf, 8);				//read rpm values from device //we need to read 8 bytes, instead of 7 (reportbyte + 6 rpm values) because of hidapi
+		for (int i = 0; i < 100; i++)						//give the device 100ms time to respond
+		{
+			hid_read(devicehandle, buf, 8);				//read rpm values from device //we need to read 8 bytes, instead of 7 (reportbyte + 6 rpm values) because of hidapi
+			if (buf[0] == 0x01)
+				break;
+			QThread::msleep(1);
+		}
 
 		if (buf[0] != 0x01 && noDevice == false)	//device not found, 0x01 is reportbyte from device
 		{

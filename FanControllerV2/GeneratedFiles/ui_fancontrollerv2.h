@@ -212,29 +212,29 @@ public:
     QSpinBox *sB_hysterisis;
     QLabel *label_13;
     QGridLayout *Layout_Status;
-    QSpacerItem *verticalSpacer_6;
-    QLabel *l_Status;
-    QSpacerItem *verticalSpacer_4;
-    QListWidget *lW_Status;
-    QSpacerItem *verticalSpacer_3;
     QGridLayout *gridLayout_3;
-    QSpacerItem *horizontalSpacer_2;
-    QLabel *l_Transparency;
-    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QGroupBox *groupBox_2;
+    QVBoxLayout *verticalLayout_24;
+    QHBoxLayout *horizontalLayout_15;
     QVBoxLayout *verticalLayout_2;
     QRadioButton *rB_Manualmode;
     QRadioButton *rB_Automode;
+    QPushButton *pB_silent;
+    QPushButton *pB_freeze;
+    QLabel *l_Transparency;
     QSlider *hS_Transparency;
-    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *verticalSpacer_4;
+    QSpacerItem *verticalSpacer_6;
+    QLabel *l_Status;
+    QListWidget *lW_Status;
 
     void setupUi(QMainWindow *FanControllerV2Class)
     {
         if (FanControllerV2Class->objectName().isEmpty())
             FanControllerV2Class->setObjectName(QStringLiteral("FanControllerV2Class"));
-        FanControllerV2Class->resize(680, 400);
-        FanControllerV2Class->setMinimumSize(QSize(680, 215));
+        FanControllerV2Class->resize(750, 400);
+        FanControllerV2Class->setMinimumSize(QSize(750, 215));
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -1203,7 +1203,7 @@ public:
         scrollArea->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 433, 372));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 442, 372));
         QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy6.setHorizontalStretch(0);
         sizePolicy6.setVerticalStretch(0);
@@ -1344,6 +1344,92 @@ public:
         Layout_Status->setSpacing(0);
         Layout_Status->setObjectName(QStringLiteral("Layout_Status"));
         Layout_Status->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        groupBox_2 = new QGroupBox(centralWidget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setEnabled(true);
+        groupBox_2->setMinimumSize(QSize(0, 0));
+        groupBox_2->setFocusPolicy(Qt::NoFocus);
+        groupBox_2->setAutoFillBackground(false);
+        groupBox_2->setStyleSheet(QStringLiteral(""));
+        groupBox_2->setFlat(false);
+        groupBox_2->setCheckable(false);
+        verticalLayout_24 = new QVBoxLayout(groupBox_2);
+        verticalLayout_24->setSpacing(6);
+        verticalLayout_24->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_24->setObjectName(QStringLiteral("verticalLayout_24"));
+        horizontalLayout_15 = new QHBoxLayout();
+        horizontalLayout_15->setSpacing(6);
+        horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        rB_Manualmode = new QRadioButton(groupBox_2);
+        rB_Manualmode->setObjectName(QStringLiteral("rB_Manualmode"));
+
+        verticalLayout_2->addWidget(rB_Manualmode);
+
+        rB_Automode = new QRadioButton(groupBox_2);
+        rB_Automode->setObjectName(QStringLiteral("rB_Automode"));
+
+        verticalLayout_2->addWidget(rB_Automode);
+
+
+        horizontalLayout_15->addLayout(verticalLayout_2);
+
+        pB_silent = new QPushButton(groupBox_2);
+        pB_silent->setObjectName(QStringLiteral("pB_silent"));
+        sizePolicy5.setHeightForWidth(pB_silent->sizePolicy().hasHeightForWidth());
+        pB_silent->setSizePolicy(sizePolicy5);
+        pB_silent->setAutoFillBackground(true);
+        pB_silent->setStyleSheet(QStringLiteral(""));
+
+        horizontalLayout_15->addWidget(pB_silent);
+
+        pB_freeze = new QPushButton(groupBox_2);
+        pB_freeze->setObjectName(QStringLiteral("pB_freeze"));
+        sizePolicy5.setHeightForWidth(pB_freeze->sizePolicy().hasHeightForWidth());
+        pB_freeze->setSizePolicy(sizePolicy5);
+        pB_freeze->setAutoFillBackground(true);
+        pB_freeze->setStyleSheet(QStringLiteral(""));
+
+        horizontalLayout_15->addWidget(pB_freeze);
+
+
+        verticalLayout_24->addLayout(horizontalLayout_15);
+
+        l_Transparency = new QLabel(groupBox_2);
+        l_Transparency->setObjectName(QStringLiteral("l_Transparency"));
+
+        verticalLayout_24->addWidget(l_Transparency);
+
+        hS_Transparency = new QSlider(groupBox_2);
+        hS_Transparency->setObjectName(QStringLiteral("hS_Transparency"));
+        hS_Transparency->setMinimum(15);
+        hS_Transparency->setMaximum(100);
+        hS_Transparency->setSliderPosition(100);
+        hS_Transparency->setOrientation(Qt::Horizontal);
+
+        verticalLayout_24->addWidget(hS_Transparency);
+
+
+        verticalLayout->addWidget(groupBox_2);
+
+
+        gridLayout_3->addLayout(verticalLayout, 1, 0, 1, 1);
+
+
+        Layout_Status->addLayout(gridLayout_3, 4, 1, 1, 1);
+
+        verticalSpacer_4 = new QSpacerItem(5, 3, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        Layout_Status->addItem(verticalSpacer_4, 2, 1, 1, 1);
+
         verticalSpacer_6 = new QSpacerItem(20, 4, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         Layout_Status->addItem(verticalSpacer_6, 0, 1, 1, 1);
@@ -1352,10 +1438,6 @@ public:
         l_Status->setObjectName(QStringLiteral("l_Status"));
 
         Layout_Status->addWidget(l_Status, 1, 1, 1, 1);
-
-        verticalSpacer_4 = new QSpacerItem(5, 3, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        Layout_Status->addItem(verticalSpacer_4, 2, 1, 1, 1);
 
         lW_Status = new QListWidget(centralWidget);
         lW_Status->setObjectName(QStringLiteral("lW_Status"));
@@ -1372,74 +1454,6 @@ public:
         lW_Status->setAlternatingRowColors(false);
 
         Layout_Status->addWidget(lW_Status, 3, 1, 1, 1);
-
-        verticalSpacer_3 = new QSpacerItem(9, 9, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        Layout_Status->addItem(verticalSpacer_3, 4, 1, 1, 1);
-
-        gridLayout_3 = new QGridLayout();
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        horizontalSpacer_2 = new QSpacerItem(5, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer_2, 3, 2, 1, 1);
-
-        l_Transparency = new QLabel(centralWidget);
-        l_Transparency->setObjectName(QStringLiteral("l_Transparency"));
-
-        gridLayout_3->addWidget(l_Transparency, 2, 1, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(5, 5, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 1, 0, 1, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        groupBox_2 = new QGroupBox(centralWidget);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setEnabled(true);
-        groupBox_2->setMinimumSize(QSize(0, 0));
-        groupBox_2->setAutoFillBackground(false);
-        groupBox_2->setStyleSheet(QStringLiteral("border:0;"));
-        groupBox_2->setFlat(false);
-        groupBox_2->setCheckable(false);
-        verticalLayout_2 = new QVBoxLayout(groupBox_2);
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 10);
-        rB_Manualmode = new QRadioButton(groupBox_2);
-        rB_Manualmode->setObjectName(QStringLiteral("rB_Manualmode"));
-
-        verticalLayout_2->addWidget(rB_Manualmode);
-
-        rB_Automode = new QRadioButton(groupBox_2);
-        rB_Automode->setObjectName(QStringLiteral("rB_Automode"));
-
-        verticalLayout_2->addWidget(rB_Automode);
-
-
-        verticalLayout->addWidget(groupBox_2);
-
-
-        gridLayout_3->addLayout(verticalLayout, 1, 1, 1, 1);
-
-        hS_Transparency = new QSlider(centralWidget);
-        hS_Transparency->setObjectName(QStringLiteral("hS_Transparency"));
-        hS_Transparency->setMinimum(15);
-        hS_Transparency->setMaximum(100);
-        hS_Transparency->setSliderPosition(100);
-        hS_Transparency->setOrientation(Qt::Horizontal);
-
-        gridLayout_3->addWidget(hS_Transparency, 3, 1, 1, 1);
-
-        verticalSpacer_5 = new QSpacerItem(20, 5, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        gridLayout_3->addItem(verticalSpacer_5, 4, 1, 1, 1);
-
-
-        Layout_Status->addLayout(gridLayout_3, 5, 1, 1, 1);
 
 
         horizontalLayout_3->addLayout(Layout_Status);
@@ -1529,6 +1543,10 @@ public:
         QObject::connect(cb_startmini, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(coB_Fan_2, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(sB_hysterisis, SIGNAL(valueChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(coB_Fan_3, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(coB_Fan_4, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(coB_Fan_5, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(coB_Fan_6, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
 
         tW_Tabs->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);
@@ -1624,14 +1642,24 @@ public:
         label_13->setText(QApplication::translate("FanControllerV2Class", "How fast the fans will react\n"
 "1=fastest, 10=slowest", 0));
         tW_Tabs->setTabText(tW_Tabs->indexOf(Settingstab), QApplication::translate("FanControllerV2Class", "Settings", 0));
-        l_Status->setText(QApplication::translate("FanControllerV2Class", "Hardware Status", 0));
-        l_Transparency->setText(QApplication::translate("FanControllerV2Class", "UI-Transparency", 0));
         groupBox_2->setTitle(QString());
         rB_Manualmode->setText(QApplication::translate("FanControllerV2Class", "Manual Mode", 0));
         rB_Automode->setText(QApplication::translate("FanControllerV2Class", "Automatic  Mode", 0));
+#ifndef QT_NO_TOOLTIP
+        pB_silent->setToolTip(QApplication::translate("FanControllerV2Class", "Sets all fans to the value they would have at 30\302\260C until 65\302\260C CPU-Temp are reached.\n"
+"Afterwards the Fans return to automatic-mode.", 0));
+#endif // QT_NO_TOOLTIP
+        pB_silent->setText(QApplication::translate("FanControllerV2Class", "Silent", 0));
+#ifndef QT_NO_TOOLTIP
+        pB_freeze->setToolTip(QApplication::translate("FanControllerV2Class", "Spins all fans up to 100% for up to 1 minute or CPU-Temp gets below 40\302\260C\n"
+"Afterwards the Fans return to automatic-mode.", 0));
+#endif // QT_NO_TOOLTIP
+        pB_freeze->setText(QApplication::translate("FanControllerV2Class", "Freeze", 0));
+        l_Transparency->setText(QApplication::translate("FanControllerV2Class", "UI-Transparency", 0));
 #ifndef QT_NO_ACCESSIBILITY
         hS_Transparency->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
+        l_Status->setText(QApplication::translate("FanControllerV2Class", "Hardware Status", 0));
     } // retranslateUi
 
 };

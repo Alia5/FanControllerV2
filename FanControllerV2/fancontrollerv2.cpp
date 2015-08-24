@@ -141,7 +141,7 @@ void FanControllerV2::init()
 	timer.setInterval(1000);
 	timer.start();
 
-	reply = manager.get(QNetworkRequest(QString("http://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
+	reply = manager.get(QNetworkRequest(QString("https://raw.githubusercontent.com/Alia5/FanControllerV2/master/Win32/Release/version")));
 	connect(&manager, SIGNAL(finished(QNetworkReply*)), this,
 		SLOT(downloadFinished(QNetworkReply*)));
 }

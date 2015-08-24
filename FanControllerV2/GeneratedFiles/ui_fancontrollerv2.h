@@ -1649,7 +1649,7 @@ public:
         pB_silent->setToolTip(QApplication::translate("FanControllerV2Class", "Sets all fans to the value they would have at 30\302\260C until 65\302\260C CPU-Temp are reached.\n"
 "Afterwards the Fans return to automatic-mode.", 0));
 #endif // QT_NO_TOOLTIP
-        pB_silent->setText(QApplication::translate("FanControllerV2Class", "Silent", 0));
+        pB_silent->setText(QApplication::translate("FanControllerV2Class", "Silence", 0));
 #ifndef QT_NO_TOOLTIP
         pB_freeze->setToolTip(QApplication::translate("FanControllerV2Class", "Spins all fans up to 100% for up to 1 minute or CPU-Temp gets below 40\302\260C\n"
 "Afterwards the Fans return to automatic-mode.", 0));

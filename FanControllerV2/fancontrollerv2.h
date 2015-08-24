@@ -103,6 +103,7 @@ private:
 	void updateTempGraphs();
 
 
+	QTimer freezeTimer;
 	bool silent;
 	bool freeze;
 

@@ -27,7 +27,7 @@
 
 #include "ui_fan.h"
 
-#define VersionNumber 211
+#define VersionNumber 212
 
 class SettingsHandler
 {

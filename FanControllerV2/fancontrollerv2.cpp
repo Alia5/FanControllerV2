@@ -376,6 +376,8 @@ void FanControllerV2::update()
 
 		ui.rB_Manualmode->setChecked(true);
 		ui.rB_Automode->setEnabled(false);
+		ui.pB_freeze->setEnabled(false);
+		ui.pB_silent->setEnabled(false);
 	}
 	else 
 	{
@@ -386,6 +388,9 @@ void FanControllerV2::update()
 		ui.rB_Automode->setEnabled(true);
 		if (wasAuto)
 			ui.rB_Automode->setChecked(true);
+
+		ui.pB_freeze->setEnabled(true);
+		ui.pB_silent->setEnabled(true);
 
 		//update graphs
 		updateTempGraphs();
@@ -459,7 +464,8 @@ void FanControllerV2::update()
 				if (ui.lW_Status->item(Settings.Data.indexOfCPUTemp)->text().remove(QRegExp("[^0-9\\d\\s]")).toInt() >= 65)
 				{
 					silent = false;
-					ui.pB_silent->setText("Silent");
+					ui.pB_silent->setText("Silence");
+					ui.pB_silent->setStyleSheet("");
 				}
 				if (!calibrationHelp.shouldCalibrate[i])
 				{
@@ -760,27 +766,50 @@ void FanControllerV2::calibrateFan()
 
 void FanControllerV2::on_pB_silent_clicked()
 {
-	freeze = false;
+	if (silent)
+	{
+		stopFreeze();
+		silent = false;
+		ui.pB_silent->setStyleSheet("");
+		return;
+	}
+
+	stopFreeze();
+	freezeTimer.stop();
 	silent = true;
 	ui.pB_freeze->setText("Freeze");
 	ui.pB_silent->setText("Silencing!");
+	ui.pB_silent->setStyleSheet("color: rgb(255, 0, 0)");
+	ui.pB_freeze->setStyleSheet("");
 }
 
 
 void FanControllerV2::on_pB_freeze_clicked()
 {
+	if (freeze)
+	{
+		stopFreeze();
+		silent = false;
+		return;
+	}
 	silent = false;
 	freeze = true;
 	ui.pB_freeze->setText("Freezing!");
-	ui.pB_silent->setText("Silent");
-	QTimer::singleShot(60000, this, SLOT(stopFreeze()));
+	ui.pB_freeze->setStyleSheet("color: rgb(0, 0, 255)");
+	ui.pB_silent->setStyleSheet("");
+	ui.pB_silent->setText("Silence");
+	freezeTimer.singleShot(60000, this, SLOT(stopFreeze()));
+	//QTimer::singleShot(60000, this, SLOT(stopFreeze()));
 }
 
 void FanControllerV2::stopFreeze()
 {
+	freezeTimer.stop();
 	freeze = false;
+	ui.pB_freeze->setStyleSheet("");
+	ui.pB_silent->setStyleSheet("");
 	ui.pB_freeze->setText("Freeze");
-	ui.pB_silent->setText("Silent");
+	ui.pB_silent->setText("Silence");
 }
 
 void FanControllerV2::downloadFinished(QNetworkReply *reply)

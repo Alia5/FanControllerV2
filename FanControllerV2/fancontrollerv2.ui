@@ -2826,7 +2826,7 @@ Afterwards the Fans return to automatic-mode.</string>
                   <string notr="true"/>
                  </property>
                  <property name="text">
-                  <string>Silent</string>
+                  <string>Silence</string>
                  </property>
                 </widget>
                </item>

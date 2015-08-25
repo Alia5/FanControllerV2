@@ -122,6 +122,7 @@ protected:
 	void update();
 
 	void updatesettings();
+	void updateAutostart();
 
 	void on_tW_Tabs_tabBarClicked(int n);
 

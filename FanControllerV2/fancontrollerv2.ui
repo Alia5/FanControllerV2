@@ -3445,22 +3445,6 @@ Afterwards the Fans return to automatic-mode.</string>
    </hints>
   </connection>
   <connection>
-   <sender>cb_autorun</sender>
-   <signal>clicked()</signal>
-   <receiver>FanControllerV2Class</receiver>
-   <slot>updatesettings()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>72</x>
-     <y>40</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>452</x>
-     <y>-11</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>rB_Aida</sender>
    <signal>clicked()</signal>
    <receiver>FanControllerV2Class</receiver>
@@ -3531,8 +3515,8 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>232</x>
-     <y>70</y>
+     <x>101</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>445</x>
@@ -3883,8 +3867,8 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>54</y>
+     <x>95</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>673</x>
@@ -3915,8 +3899,8 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>60</y>
+     <x>101</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>374</x>
@@ -3931,8 +3915,8 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>60</y>
+     <x>101</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>374</x>
@@ -3947,8 +3931,8 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>60</y>
+     <x>101</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>374</x>
@@ -3963,12 +3947,28 @@ Afterwards the Fans return to automatic-mode.</string>
    <slot>updatesettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>60</y>
+     <x>101</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>374</x>
      <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_autorun</sender>
+   <signal>clicked()</signal>
+   <receiver>FanControllerV2Class</receiver>
+   <slot>updateAutostart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>52</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>-4</y>
     </hint>
    </hints>
   </connection>
@@ -3979,5 +3979,6 @@ Afterwards the Fans return to automatic-mode.</string>
   <slot>resetCalibration()</slot>
   <slot>manualCalibration()</slot>
   <slot>about()</slot>
+  <slot>updateAutostart()</slot>
  </slots>
 </ui>

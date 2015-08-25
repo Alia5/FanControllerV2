@@ -1514,7 +1514,6 @@ public:
         QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_4, SLOT(setVisible(bool)));
         QObject::connect(cb_sliders, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(cb_dials, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
-        QObject::connect(cb_autorun, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(rB_Aida, SIGNAL(clicked()), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(cb_dials, SIGNAL(toggled(bool)), dial_6, SLOT(setVisible(bool)));
         QObject::connect(vS_Fan_3, SIGNAL(valueChanged(int)), dial_3, SLOT(setValue(int)));
@@ -1547,6 +1546,7 @@ public:
         QObject::connect(coB_Fan_4, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(coB_Fan_5, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
         QObject::connect(coB_Fan_6, SIGNAL(currentIndexChanged(int)), FanControllerV2Class, SLOT(updatesettings()));
+        QObject::connect(cb_autorun, SIGNAL(clicked()), FanControllerV2Class, SLOT(updateAutostart()));
 
         tW_Tabs->setCurrentIndex(0);
         tabWidget->setCurrentIndex(0);

@@ -541,19 +541,6 @@ void FanControllerV2::SliderValChanged(int value)
 
 void FanControllerV2::updatesettings()
 {
-	//autorun win32...
-#ifdef _WIN32
-	QSettings RegSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-		QSettings::NativeFormat);
-	if (ui.cb_autorun->isChecked())
-	{
-		RegSettings.setValue("FanControlV2", "\"" + QDir::currentPath().remove("/platforms").replace("/", "\\") + "\\FanControllerV2.exe\"");
-	}
-	else {
-		RegSettings.remove("FanControlV2");
-	}
-#endif
-
 	Settings.Data.autoRun = ui.cb_autorun->isChecked();
 	Settings.Data.startMini = ui.cb_startmini->isChecked();
 	Settings.Data.waitfor = ui.cb_waitfor->isChecked();
@@ -580,6 +567,25 @@ void FanControllerV2::updatesettings()
 
 	Settings.WriteSettings();
 }
+
+
+void FanControllerV2::updateAutostart()
+{
+	//autorun win32...
+#ifdef _WIN32
+	QSettings RegSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+		QSettings::NativeFormat);
+	if (ui.cb_autorun->isChecked())
+	{
+		RegSettings.setValue("FanControlV2", "\"" + QDir::toNativeSeparators(
+			QCoreApplication::applicationFilePath()) + "\"");
+	}
+	else {
+		RegSettings.remove("FanControlV2");
+	}
+#endif
+}
+
 
 void FanControllerV2::on_tW_Tabs_tabBarClicked(int n)
 {

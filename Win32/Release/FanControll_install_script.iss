@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FanControllV2"
-#define MyAppVersion "2.13"
+#define MyAppVersion "2.14"
 #define MyAppPublisher "Alia5"
 #define MyAppURL "https://github.com/Alia5/FanControllerV2"
 #define MyAppExeName "FanControllerV2.exe"

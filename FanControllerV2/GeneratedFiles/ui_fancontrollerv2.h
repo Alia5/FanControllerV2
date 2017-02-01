@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'fancontrollerv2.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.0
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -1557,109 +1557,109 @@ public:
 
     void retranslateUi(QMainWindow *FanControllerV2Class)
     {
-        FanControllerV2Class->setWindowTitle(QApplication::translate("FanControllerV2Class", "FanController", 0));
-        l_FanVoltage_6->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        l_FanRPM_4->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
-        l_FanVoltage_3->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        l_FanRPM_3->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
+        FanControllerV2Class->setWindowTitle(QApplication::translate("FanControllerV2Class", "FanController", Q_NULLPTR));
+        l_FanVoltage_6->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        l_FanRPM_4->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
+        l_FanVoltage_3->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        l_FanRPM_3->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
         cB_keepOff_1->setText(QString());
         cB_keepOff_5->setText(QString());
         cB_keepOff_6->setText(QString());
-        l_FanRPM_2->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
+        l_FanRPM_2->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
         cB_keepOff_2->setText(QString());
-        l_FanPerc_1->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
-        l_FanPerc_3->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
-        l_FanPerc_4->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
-        l_FanRPM_1->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
-        l_FanPerc_5->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
-        l_FanPerc_2->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
-        l_FanPerc_6->setText(QApplication::translate("FanControllerV2Class", "0%", 0));
+        l_FanPerc_1->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
+        l_FanPerc_3->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
+        l_FanPerc_4->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
+        l_FanRPM_1->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
+        l_FanPerc_5->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
+        l_FanPerc_2->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
+        l_FanPerc_6->setText(QApplication::translate("FanControllerV2Class", "0%", Q_NULLPTR));
         cB_keepOff_4->setText(QString());
         cB_keepOff_3->setText(QString());
-        l_FanVoltage_2->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        l_FanVoltage_5->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        l_FanRPM_6->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
-        l_FanRPM_5->setText(QApplication::translate("FanControllerV2Class", "???   RPM", 0));
-        l_FanVoltage_4->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        l_FanVoltage_1->setText(QApplication::translate("FanControllerV2Class", "~0.0V", 0));
-        label_3la->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p align=\"center\">Keep Fans off? Fan spins up regardless if max. CPU-Temp gets exceeded!</p></body></html>", 0));
-        tW_Tabs->setTabText(tW_Tabs->indexOf(statustab), QApplication::translate("FanControllerV2Class", "Status / Manual", 0));
-        label_5->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_14->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_15->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0000ff;\"/><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("FanControllerV2Class", "Fan1", 0));
-        label_6->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_17->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_16->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("FanControllerV2Class", "Fan2", 0));
-        label_7->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_18->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_19->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("FanControllerV2Class", "Fan3", 0));
-        label_8->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_20->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_21->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("FanControllerV2Class", "Fan4", 0));
-        label_9->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_22->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_23->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("FanControllerV2Class", "Fan5", 0));
-        label_10->setText(QApplication::translate("FanControllerV2Class", "React to:", 0));
-        label_24->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", 0));
-        label_25->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("FanControllerV2Class", "Fan6", 0));
-        tW_Tabs->setTabText(tW_Tabs->indexOf(autosettings), QApplication::translate("FanControllerV2Class", "Automatic settings", 0));
-        groupBox->setTitle(QApplication::translate("FanControllerV2Class", "DeviceInfo", 0));
-        l_Manufact->setText(QApplication::translate("FanControllerV2Class", "Manufacturer: ", 0));
-        l_Product->setText(QApplication::translate("FanControllerV2Class", "Product Name:", 0));
-        l_Serial->setText(QApplication::translate("FanControllerV2Class", "SerialNumber: ", 0));
-        rB_HWiNFO->setText(QApplication::translate("FanControllerV2Class", "Use HWiNFO64 for temps", 0));
+        l_FanVoltage_2->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        l_FanVoltage_5->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        l_FanRPM_6->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
+        l_FanRPM_5->setText(QApplication::translate("FanControllerV2Class", "???   RPM", Q_NULLPTR));
+        l_FanVoltage_4->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        l_FanVoltage_1->setText(QApplication::translate("FanControllerV2Class", "~0.0V", Q_NULLPTR));
+        label_3la->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p align=\"center\">Keep Fans off? Fan spins up regardless if max. CPU-Temp gets exceeded!</p></body></html>", Q_NULLPTR));
+        tW_Tabs->setTabText(tW_Tabs->indexOf(statustab), QApplication::translate("FanControllerV2Class", "Status / Manual", Q_NULLPTR));
+        label_5->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_14->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_15->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0000ff;\"/><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("FanControllerV2Class", "Fan1", Q_NULLPTR));
+        label_6->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_17->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_16->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("FanControllerV2Class", "Fan2", Q_NULLPTR));
+        label_7->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_18->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_19->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("FanControllerV2Class", "Fan3", Q_NULLPTR));
+        label_8->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_20->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_21->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("FanControllerV2Class", "Fan4", Q_NULLPTR));
+        label_9->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_22->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_23->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("FanControllerV2Class", "Fan5", Q_NULLPTR));
+        label_10->setText(QApplication::translate("FanControllerV2Class", "React to:", Q_NULLPTR));
+        label_24->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ffffff;\">__</span><span style=\" font-weight:600; color:#ff0000;\">% </span><span style=\" font-weight:600;\">/ </span><span style=\" font-weight:600; color:#0080ff;\">\302\260C</span></p></body></html>", Q_NULLPTR));
+        label_25->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><span style=\" font-weight:600; color:#ff0000;\">\302\260C</span><span style=\" font-weight:600;\"> /</span><span style=\" font-weight:600; color:#0080ff;\">s </span></p></body></html>", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("FanControllerV2Class", "Fan6", Q_NULLPTR));
+        tW_Tabs->setTabText(tW_Tabs->indexOf(autosettings), QApplication::translate("FanControllerV2Class", "Automatic settings", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("FanControllerV2Class", "DeviceInfo", Q_NULLPTR));
+        l_Manufact->setText(QApplication::translate("FanControllerV2Class", "Manufacturer: ", Q_NULLPTR));
+        l_Product->setText(QApplication::translate("FanControllerV2Class", "Product Name:", Q_NULLPTR));
+        l_Serial->setText(QApplication::translate("FanControllerV2Class", "SerialNumber: ", Q_NULLPTR));
+        rB_HWiNFO->setText(QApplication::translate("FanControllerV2Class", "Use HWiNFO64 for temps", Q_NULLPTR));
         label_3->setText(QApplication::translate("FanControllerV2Class", "Automatically sets\n"
-"startup-voltage of Fans", 0));
-        cb_autorun->setText(QApplication::translate("FanControllerV2Class", "Run un Startup", 0));
-        pB_FanRstAll->setText(QApplication::translate("FanControllerV2Class", "Reset all fan calibrations", 0));
+"startup-voltage of Fans", Q_NULLPTR));
+        cb_autorun->setText(QApplication::translate("FanControllerV2Class", "Run un Startup", Q_NULLPTR));
+        pB_FanRstAll->setText(QApplication::translate("FanControllerV2Class", "Reset all fan calibrations", Q_NULLPTR));
         label_4->setText(QApplication::translate("FanControllerV2Class", "Resets the startup-voltage\n"
-"of Fans back to 0V", 0));
-        cb_startmini->setText(QApplication::translate("FanControllerV2Class", "Start Minimized", 0));
-        pB_FanCali->setText(QApplication::translate("FanControllerV2Class", "Calibrate fan", 0));
-        cb_sliders->setText(QApplication::translate("FanControllerV2Class", "Use Sliders on statuspage", 0));
-        pB_FanCaliAll->setText(QApplication::translate("FanControllerV2Class", "Calibrate all fans", 0));
-        cb_dials->setText(QApplication::translate("FanControllerV2Class", "Use Dials on statuspage", 0));
-        rB_Aida->setText(QApplication::translate("FanControllerV2Class", "Use AIDA64 for temps", 0));
-        pB_FanRst->setText(QApplication::translate("FanControllerV2Class", "Reset fan", 0));
-        label->setText(QApplication::translate("FanControllerV2Class", "Max CPU-Temperature", 0));
-        label_2->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p>If this temperature gets exceeded,<br/>all fans will spin up to full speed.<br/>Regardless of any other settings!</p></body></html>", 0));
-        sB_MaxTemp->setSuffix(QApplication::translate("FanControllerV2Class", "\302\260C", 0));
-        pB_FanCaliMan->setText(QApplication::translate("FanControllerV2Class", "Manually calibrate fan", 0));
+"of Fans back to 0V", Q_NULLPTR));
+        cb_startmini->setText(QApplication::translate("FanControllerV2Class", "Start Minimized", Q_NULLPTR));
+        pB_FanCali->setText(QApplication::translate("FanControllerV2Class", "Calibrate fan", Q_NULLPTR));
+        cb_sliders->setText(QApplication::translate("FanControllerV2Class", "Use Sliders on statuspage", Q_NULLPTR));
+        pB_FanCaliAll->setText(QApplication::translate("FanControllerV2Class", "Calibrate all fans", Q_NULLPTR));
+        cb_dials->setText(QApplication::translate("FanControllerV2Class", "Use Dials on statuspage", Q_NULLPTR));
+        rB_Aida->setText(QApplication::translate("FanControllerV2Class", "Use AIDA64 for temps", Q_NULLPTR));
+        pB_FanRst->setText(QApplication::translate("FanControllerV2Class", "Reset fan", Q_NULLPTR));
+        label->setText(QApplication::translate("FanControllerV2Class", "Max CPU-Temperature", Q_NULLPTR));
+        label_2->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p>If this temperature gets exceeded,<br/>all fans will spin up to full speed.<br/>Regardless of any other settings!</p></body></html>", Q_NULLPTR));
+        sB_MaxTemp->setSuffix(QApplication::translate("FanControllerV2Class", "\302\260C", Q_NULLPTR));
+        pB_FanCaliMan->setText(QApplication::translate("FanControllerV2Class", "Manually calibrate fan", Q_NULLPTR));
         label_11->setText(QApplication::translate("FanControllerV2Class", "Manually set the startup-voltage\n"
-" to the current one", 0));
-        l_about->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><a href=\"file://readme.txt\"><span style=\" font-size:7pt; text-decoration: underline; color:#0000ff;\">About this application</span></a></p></body></html>", 0));
+" to the current one", Q_NULLPTR));
+        l_about->setText(QApplication::translate("FanControllerV2Class", "<html><head/><body><p><a href=\"file://readme.txt\"><span style=\" font-size:7pt; text-decoration: underline; color:#0000ff;\">About this application</span></a></p></body></html>", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        cb_waitfor->setToolTip(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO upon startup", 0));
+        cb_waitfor->setToolTip(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO upon startup", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        cb_waitfor->setText(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO", 0));
-        label_12->setText(QApplication::translate("FanControllerV2Class", "Fan-Hysteresis:", 0));
+        cb_waitfor->setText(QApplication::translate("FanControllerV2Class", "Wait for AIDA64 / HWiNFO", Q_NULLPTR));
+        label_12->setText(QApplication::translate("FanControllerV2Class", "Fan-Hysteresis:", Q_NULLPTR));
         label_13->setText(QApplication::translate("FanControllerV2Class", "How fast the fans will react\n"
-"1=fastest, 10=slowest", 0));
-        tW_Tabs->setTabText(tW_Tabs->indexOf(Settingstab), QApplication::translate("FanControllerV2Class", "Settings", 0));
+"1=fastest, 10=slowest", Q_NULLPTR));
+        tW_Tabs->setTabText(tW_Tabs->indexOf(Settingstab), QApplication::translate("FanControllerV2Class", "Settings", Q_NULLPTR));
         groupBox_2->setTitle(QString());
-        rB_Manualmode->setText(QApplication::translate("FanControllerV2Class", "Manual Mode", 0));
-        rB_Automode->setText(QApplication::translate("FanControllerV2Class", "Automatic  Mode", 0));
+        rB_Manualmode->setText(QApplication::translate("FanControllerV2Class", "Manual Mode", Q_NULLPTR));
+        rB_Automode->setText(QApplication::translate("FanControllerV2Class", "Automatic  Mode", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pB_silent->setToolTip(QApplication::translate("FanControllerV2Class", "Sets all fans to the value they would have at 30\302\260C until 65\302\260C CPU-Temp are reached.\n"
-"Afterwards the Fans return to automatic-mode.", 0));
+"Afterwards the Fans return to automatic-mode.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        pB_silent->setText(QApplication::translate("FanControllerV2Class", "Silence", 0));
+        pB_silent->setText(QApplication::translate("FanControllerV2Class", "Silence", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pB_freeze->setToolTip(QApplication::translate("FanControllerV2Class", "Spins all fans up to 100% for up to 1 minute or CPU-Temp gets below 40\302\260C\n"
-"Afterwards the Fans return to automatic-mode.", 0));
+"Afterwards the Fans return to automatic-mode.", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        pB_freeze->setText(QApplication::translate("FanControllerV2Class", "Freeze", 0));
-        l_Transparency->setText(QApplication::translate("FanControllerV2Class", "UI-Transparency", 0));
+        pB_freeze->setText(QApplication::translate("FanControllerV2Class", "Freeze", Q_NULLPTR));
+        l_Transparency->setText(QApplication::translate("FanControllerV2Class", "UI-Transparency", Q_NULLPTR));
 #ifndef QT_NO_ACCESSIBILITY
         hS_Transparency->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
-        l_Status->setText(QApplication::translate("FanControllerV2Class", "Hardware Status", 0));
+        l_Status->setText(QApplication::translate("FanControllerV2Class", "Hardware Status", Q_NULLPTR));
     } // retranslateUi
 
 };

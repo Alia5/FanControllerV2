@@ -1,3 +1,7 @@
+**The code for this is pretty old and pretty pretty bad, horrible even, _do not use this!_**
+**Don't even look at this!**
+_regardless, the software works fine, if you're brave or stupid enough to run this or a combination of both (like me...)_
+
 This FanController project  was created by my desire to to have a custom FanController-Hardware, which has 6 channels,
 is usb-controlled, and gets its temperatues from the hardware-sensors instead of some crappy temperature fingers you attach to a heatsink
 this is the controll application for my usb fan controller.
